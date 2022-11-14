@@ -39,16 +39,6 @@ namespace ApplicationDesign
             this.reservationIDLabel = new System.Windows.Forms.Label();
             this.reservationIDTextBox = new System.Windows.Forms.TextBox();
             this.reservationsLabel = new System.Windows.Forms.Label();
-            this.retrieveReservationDGV = new System.Windows.Forms.DataGridView();
-            this.clientFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomReady = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reservationStartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reservationEndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updateReservationButton = new System.Windows.Forms.Button();
             this.deleteReservationButton = new System.Windows.Forms.Button();
             this.reservationsPanel = new System.Windows.Forms.Panel();
@@ -70,12 +60,32 @@ namespace ApplicationDesign
             this.findGuestToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.updateReservationToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.deleteReservationToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.employeeFirstNamePanel = new System.Windows.Forms.Panel();
+            this.reservationEndDateDTP = new System.Windows.Forms.DateTimePicker();
+            this.reservationEndDateLabel = new System.Windows.Forms.Label();
+            this.reservationStartDateLabel = new System.Windows.Forms.Label();
+            this.reservationStartDateDTP = new System.Windows.Forms.DateTimePicker();
+            this.guestRoomNumberListBox = new System.Windows.Forms.ListBox();
+            this.guestRoomNumberLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.invalidGuestLastNameLabel = new System.Windows.Forms.Label();
+            this.guestLastNameUnderlinePanel = new System.Windows.Forms.Panel();
+            this.guestLastNameLabel = new System.Windows.Forms.Label();
+            this.guestLastNameTextBox = new System.Windows.Forms.TextBox();
+            this.invalidGuestFirstNameLabel = new System.Windows.Forms.Label();
+            this.guestFirstNameUnderlinePanel = new System.Windows.Forms.Panel();
+            this.guestFirstNameLabel = new System.Windows.Forms.Label();
+            this.guestFirstNameTextBox = new System.Windows.Forms.TextBox();
+            this.frontDeskListBox = new System.Windows.Forms.ListBox();
             this.reservationIDPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reservationIDPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.retrieveReservationDGV)).BeginInit();
             this.reservationsPanel.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kingWilliamHotelPictureBox)).BeginInit();
+            this.employeeFirstNamePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // frontDeskLabel
@@ -92,16 +102,17 @@ namespace ApplicationDesign
             // 
             // reservationIDPanel
             // 
+            this.reservationIDPanel.Controls.Add(this.frontDeskListBox);
             this.reservationIDPanel.Controls.Add(this.findReservationButton);
             this.reservationIDPanel.Controls.Add(this.invalidReservationIDLabel);
             this.reservationIDPanel.Controls.Add(this.reservationIDLinePanel);
             this.reservationIDPanel.Controls.Add(this.reservationIDPictureBox);
             this.reservationIDPanel.Controls.Add(this.reservationIDLabel);
             this.reservationIDPanel.Controls.Add(this.reservationIDTextBox);
-            this.reservationIDPanel.Location = new System.Drawing.Point(248, 229);
+            this.reservationIDPanel.Location = new System.Drawing.Point(252, 177);
             this.reservationIDPanel.Margin = new System.Windows.Forms.Padding(4);
             this.reservationIDPanel.Name = "reservationIDPanel";
-            this.reservationIDPanel.Size = new System.Drawing.Size(631, 145);
+            this.reservationIDPanel.Size = new System.Drawing.Size(776, 197);
             this.reservationIDPanel.TabIndex = 5;
             // 
             // findReservationButton
@@ -111,7 +122,7 @@ namespace ApplicationDesign
             this.findReservationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.findReservationButton.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.findReservationButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.findReservationButton.Location = new System.Drawing.Point(447, 94);
+            this.findReservationButton.Location = new System.Drawing.Point(583, 34);
             this.findReservationButton.Margin = new System.Windows.Forms.Padding(4);
             this.findReservationButton.Name = "findReservationButton";
             this.findReservationButton.Size = new System.Drawing.Size(180, 52);
@@ -142,7 +153,7 @@ namespace ApplicationDesign
             this.reservationIDLinePanel.Location = new System.Drawing.Point(337, 57);
             this.reservationIDLinePanel.Margin = new System.Windows.Forms.Padding(4);
             this.reservationIDLinePanel.Name = "reservationIDLinePanel";
-            this.reservationIDLinePanel.Size = new System.Drawing.Size(267, 2);
+            this.reservationIDLinePanel.Size = new System.Drawing.Size(225, 2);
             this.reservationIDLinePanel.TabIndex = 8;
             // 
             // reservationIDPictureBox
@@ -188,95 +199,12 @@ namespace ApplicationDesign
             this.reservationsLabel.AutoSize = true;
             this.reservationsLabel.Font = new System.Drawing.Font("Times New Roman", 17.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reservationsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.reservationsLabel.Location = new System.Drawing.Point(19, 21);
+            this.reservationsLabel.Location = new System.Drawing.Point(41, 35);
             this.reservationsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.reservationsLabel.Name = "reservationsLabel";
             this.reservationsLabel.Size = new System.Drawing.Size(172, 32);
             this.reservationsLabel.TabIndex = 19;
             this.reservationsLabel.Text = "Reservations";
-            // 
-            // retrieveReservationDGV
-            // 
-            this.retrieveReservationDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.retrieveReservationDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clientFirstName,
-            this.clientLastName,
-            this.clientEmail,
-            this.roomNumber,
-            this.roomType,
-            this.roomDesc,
-            this.roomReady,
-            this.reservationStartDate,
-            this.reservationEndDate});
-            this.retrieveReservationDGV.Location = new System.Drawing.Point(19, 66);
-            this.retrieveReservationDGV.Margin = new System.Windows.Forms.Padding(4);
-            this.retrieveReservationDGV.Name = "retrieveReservationDGV";
-            this.retrieveReservationDGV.RowHeadersWidth = 51;
-            this.retrieveReservationDGV.Size = new System.Drawing.Size(1535, 126);
-            this.retrieveReservationDGV.TabIndex = 20;
-            // 
-            // clientFirstName
-            // 
-            this.clientFirstName.HeaderText = "Guest First Name";
-            this.clientFirstName.MinimumWidth = 6;
-            this.clientFirstName.Name = "clientFirstName";
-            this.clientFirstName.Width = 125;
-            // 
-            // clientLastName
-            // 
-            this.clientLastName.HeaderText = "Guest Last Name";
-            this.clientLastName.MinimumWidth = 6;
-            this.clientLastName.Name = "clientLastName";
-            this.clientLastName.Width = 125;
-            // 
-            // clientEmail
-            // 
-            this.clientEmail.HeaderText = "Guest Email";
-            this.clientEmail.MinimumWidth = 6;
-            this.clientEmail.Name = "clientEmail";
-            this.clientEmail.Width = 125;
-            // 
-            // roomNumber
-            // 
-            this.roomNumber.HeaderText = "Room Number";
-            this.roomNumber.MinimumWidth = 6;
-            this.roomNumber.Name = "roomNumber";
-            this.roomNumber.Width = 125;
-            // 
-            // roomType
-            // 
-            this.roomType.HeaderText = "Room Type";
-            this.roomType.MinimumWidth = 6;
-            this.roomType.Name = "roomType";
-            this.roomType.Width = 125;
-            // 
-            // roomDesc
-            // 
-            this.roomDesc.HeaderText = "Room Description";
-            this.roomDesc.MinimumWidth = 6;
-            this.roomDesc.Name = "roomDesc";
-            this.roomDesc.Width = 125;
-            // 
-            // roomReady
-            // 
-            this.roomReady.HeaderText = "Room Ready";
-            this.roomReady.MinimumWidth = 6;
-            this.roomReady.Name = "roomReady";
-            this.roomReady.Width = 125;
-            // 
-            // reservationStartDate
-            // 
-            this.reservationStartDate.HeaderText = "Reservation Start Date";
-            this.reservationStartDate.MinimumWidth = 6;
-            this.reservationStartDate.Name = "reservationStartDate";
-            this.reservationStartDate.Width = 125;
-            // 
-            // reservationEndDate
-            // 
-            this.reservationEndDate.HeaderText = "Reservation End Date";
-            this.reservationEndDate.MinimumWidth = 6;
-            this.reservationEndDate.Name = "reservationEndDate";
-            this.reservationEndDate.Width = 125;
             // 
             // updateReservationButton
             // 
@@ -285,7 +213,7 @@ namespace ApplicationDesign
             this.updateReservationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.updateReservationButton.Font = new System.Drawing.Font("Times New Roman", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateReservationButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.updateReservationButton.Location = new System.Drawing.Point(886, 215);
+            this.updateReservationButton.Location = new System.Drawing.Point(605, 266);
             this.updateReservationButton.Margin = new System.Windows.Forms.Padding(4);
             this.updateReservationButton.Name = "updateReservationButton";
             this.updateReservationButton.Size = new System.Drawing.Size(325, 73);
@@ -301,7 +229,7 @@ namespace ApplicationDesign
             this.deleteReservationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteReservationButton.Font = new System.Drawing.Font("Times New Roman", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteReservationButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.deleteReservationButton.Location = new System.Drawing.Point(1229, 215);
+            this.deleteReservationButton.Location = new System.Drawing.Point(976, 266);
             this.deleteReservationButton.Margin = new System.Windows.Forms.Padding(4);
             this.deleteReservationButton.Name = "deleteReservationButton";
             this.deleteReservationButton.Size = new System.Drawing.Size(325, 73);
@@ -312,14 +240,13 @@ namespace ApplicationDesign
             // 
             // reservationsPanel
             // 
-            this.reservationsPanel.Controls.Add(this.reservationsLabel);
+            this.reservationsPanel.Controls.Add(this.employeeFirstNamePanel);
             this.reservationsPanel.Controls.Add(this.deleteReservationButton);
-            this.reservationsPanel.Controls.Add(this.retrieveReservationDGV);
             this.reservationsPanel.Controls.Add(this.updateReservationButton);
-            this.reservationsPanel.Location = new System.Drawing.Point(248, 401);
+            this.reservationsPanel.Location = new System.Drawing.Point(252, 382);
             this.reservationsPanel.Margin = new System.Windows.Forms.Padding(4);
             this.reservationsPanel.Name = "reservationsPanel";
-            this.reservationsPanel.Size = new System.Drawing.Size(1558, 330);
+            this.reservationsPanel.Size = new System.Drawing.Size(1305, 344);
             this.reservationsPanel.TabIndex = 18;
             // 
             // panel3
@@ -330,10 +257,10 @@ namespace ApplicationDesign
             this.panel3.Controls.Add(this.textBox1);
             this.panel3.Controls.Add(this.lastNameToolTip);
             this.panel3.Controls.Add(this.findGuestLabel);
-            this.panel3.Location = new System.Drawing.Point(907, 230);
+            this.panel3.Location = new System.Drawing.Point(1036, 177);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(656, 145);
+            this.panel3.Size = new System.Drawing.Size(521, 197);
             this.panel3.TabIndex = 11;
             // 
             // findGuestButton
@@ -343,7 +270,7 @@ namespace ApplicationDesign
             this.findGuestButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.findGuestButton.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.findGuestButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.findGuestButton.Location = new System.Drawing.Point(472, 94);
+            this.findGuestButton.Location = new System.Drawing.Point(337, 141);
             this.findGuestButton.Margin = new System.Windows.Forms.Padding(4);
             this.findGuestButton.Name = "findGuestButton";
             this.findGuestButton.Size = new System.Drawing.Size(180, 52);
@@ -463,12 +390,266 @@ namespace ApplicationDesign
             this.kingWilliamHotelPictureBox.TabIndex = 1;
             this.kingWilliamHotelPictureBox.TabStop = false;
             // 
+            // employeeFirstNamePanel
+            // 
+            this.employeeFirstNamePanel.Controls.Add(this.reservationEndDateDTP);
+            this.employeeFirstNamePanel.Controls.Add(this.reservationsLabel);
+            this.employeeFirstNamePanel.Controls.Add(this.reservationEndDateLabel);
+            this.employeeFirstNamePanel.Controls.Add(this.reservationStartDateLabel);
+            this.employeeFirstNamePanel.Controls.Add(this.reservationStartDateDTP);
+            this.employeeFirstNamePanel.Controls.Add(this.guestRoomNumberListBox);
+            this.employeeFirstNamePanel.Controls.Add(this.guestRoomNumberLabel);
+            this.employeeFirstNamePanel.Controls.Add(this.label1);
+            this.employeeFirstNamePanel.Controls.Add(this.panel1);
+            this.employeeFirstNamePanel.Controls.Add(this.label3);
+            this.employeeFirstNamePanel.Controls.Add(this.textBox2);
+            this.employeeFirstNamePanel.Controls.Add(this.invalidGuestLastNameLabel);
+            this.employeeFirstNamePanel.Controls.Add(this.guestLastNameUnderlinePanel);
+            this.employeeFirstNamePanel.Controls.Add(this.guestLastNameLabel);
+            this.employeeFirstNamePanel.Controls.Add(this.guestLastNameTextBox);
+            this.employeeFirstNamePanel.Controls.Add(this.invalidGuestFirstNameLabel);
+            this.employeeFirstNamePanel.Controls.Add(this.guestFirstNameUnderlinePanel);
+            this.employeeFirstNamePanel.Controls.Add(this.guestFirstNameLabel);
+            this.employeeFirstNamePanel.Controls.Add(this.guestFirstNameTextBox);
+            this.employeeFirstNamePanel.Location = new System.Drawing.Point(4, 4);
+            this.employeeFirstNamePanel.Margin = new System.Windows.Forms.Padding(4);
+            this.employeeFirstNamePanel.Name = "employeeFirstNamePanel";
+            this.employeeFirstNamePanel.Size = new System.Drawing.Size(1297, 254);
+            this.employeeFirstNamePanel.TabIndex = 23;
+            // 
+            // reservationEndDateDTP
+            // 
+            this.reservationEndDateDTP.Location = new System.Drawing.Point(1013, 203);
+            this.reservationEndDateDTP.Margin = new System.Windows.Forms.Padding(4);
+            this.reservationEndDateDTP.Name = "reservationEndDateDTP";
+            this.reservationEndDateDTP.Size = new System.Drawing.Size(247, 22);
+            this.reservationEndDateDTP.TabIndex = 28;
+            // 
+            // reservationEndDateLabel
+            // 
+            this.reservationEndDateLabel.AutoSize = true;
+            this.reservationEndDateLabel.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reservationEndDateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
+            this.reservationEndDateLabel.Location = new System.Drawing.Point(727, 201);
+            this.reservationEndDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.reservationEndDateLabel.MinimumSize = new System.Drawing.Size(71, 25);
+            this.reservationEndDateLabel.Name = "reservationEndDateLabel";
+            this.reservationEndDateLabel.Size = new System.Drawing.Size(226, 25);
+            this.reservationEndDateLabel.TabIndex = 27;
+            this.reservationEndDateLabel.Text = "Reservation End Date:";
+            // 
+            // reservationStartDateLabel
+            // 
+            this.reservationStartDateLabel.AutoSize = true;
+            this.reservationStartDateLabel.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reservationStartDateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
+            this.reservationStartDateLabel.Location = new System.Drawing.Point(727, 140);
+            this.reservationStartDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.reservationStartDateLabel.MinimumSize = new System.Drawing.Size(71, 25);
+            this.reservationStartDateLabel.Name = "reservationStartDateLabel";
+            this.reservationStartDateLabel.Size = new System.Drawing.Size(233, 25);
+            this.reservationStartDateLabel.TabIndex = 25;
+            this.reservationStartDateLabel.Text = "Reservation Start Date:";
+            // 
+            // reservationStartDateDTP
+            // 
+            this.reservationStartDateDTP.Location = new System.Drawing.Point(1015, 143);
+            this.reservationStartDateDTP.Margin = new System.Windows.Forms.Padding(4);
+            this.reservationStartDateDTP.Name = "reservationStartDateDTP";
+            this.reservationStartDateDTP.Size = new System.Drawing.Size(247, 22);
+            this.reservationStartDateDTP.TabIndex = 26;
+            // 
+            // guestRoomNumberListBox
+            // 
+            this.guestRoomNumberListBox.FormattingEnabled = true;
+            this.guestRoomNumberListBox.ItemHeight = 16;
+            this.guestRoomNumberListBox.Location = new System.Drawing.Point(1015, 87);
+            this.guestRoomNumberListBox.Name = "guestRoomNumberListBox";
+            this.guestRoomNumberListBox.Size = new System.Drawing.Size(250, 20);
+            this.guestRoomNumberListBox.TabIndex = 24;
+            // 
+            // guestRoomNumberLabel
+            // 
+            this.guestRoomNumberLabel.AutoSize = true;
+            this.guestRoomNumberLabel.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guestRoomNumberLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
+            this.guestRoomNumberLabel.Location = new System.Drawing.Point(727, 82);
+            this.guestRoomNumberLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.guestRoomNumberLabel.MinimumSize = new System.Drawing.Size(71, 25);
+            this.guestRoomNumberLabel.Name = "guestRoomNumberLabel";
+            this.guestRoomNumberLabel.Size = new System.Drawing.Size(218, 25);
+            this.guestRoomNumberLabel.TabIndex = 23;
+            this.guestRoomNumberLabel.Text = "Guest Room Number:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(308, 227);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.MinimumSize = new System.Drawing.Size(365, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(365, 23);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Invalid Guest First Name.";
+            this.label1.Visible = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.ForeColor = System.Drawing.Color.White;
+            this.panel1.Location = new System.Drawing.Point(308, 221);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(365, 2);
+            this.panel1.TabIndex = 21;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
+            this.label3.Location = new System.Drawing.Point(54, 201);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.MinimumSize = new System.Drawing.Size(71, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(136, 25);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Guest Email:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(141)))), ((int)(((byte)(183)))));
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.Gainsboro;
+            this.textBox2.Location = new System.Drawing.Point(312, 196);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox2.MinimumSize = new System.Drawing.Size(71, 20);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(364, 23);
+            this.textBox2.TabIndex = 20;
+            this.textBox2.Text = "Guest Email";
+            // 
+            // invalidGuestLastNameLabel
+            // 
+            this.invalidGuestLastNameLabel.AutoSize = true;
+            this.invalidGuestLastNameLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invalidGuestLastNameLabel.ForeColor = System.Drawing.Color.Red;
+            this.invalidGuestLastNameLabel.Location = new System.Drawing.Point(310, 169);
+            this.invalidGuestLastNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.invalidGuestLastNameLabel.MinimumSize = new System.Drawing.Size(365, 16);
+            this.invalidGuestLastNameLabel.Name = "invalidGuestLastNameLabel";
+            this.invalidGuestLastNameLabel.Size = new System.Drawing.Size(365, 23);
+            this.invalidGuestLastNameLabel.TabIndex = 18;
+            this.invalidGuestLastNameLabel.Text = "Invalid Guest Last Name.";
+            this.invalidGuestLastNameLabel.Visible = false;
+            // 
+            // guestLastNameUnderlinePanel
+            // 
+            this.guestLastNameUnderlinePanel.BackColor = System.Drawing.Color.White;
+            this.guestLastNameUnderlinePanel.ForeColor = System.Drawing.Color.White;
+            this.guestLastNameUnderlinePanel.Location = new System.Drawing.Point(308, 163);
+            this.guestLastNameUnderlinePanel.Margin = new System.Windows.Forms.Padding(4);
+            this.guestLastNameUnderlinePanel.Name = "guestLastNameUnderlinePanel";
+            this.guestLastNameUnderlinePanel.Size = new System.Drawing.Size(365, 2);
+            this.guestLastNameUnderlinePanel.TabIndex = 17;
+            // 
+            // guestLastNameLabel
+            // 
+            this.guestLastNameLabel.AutoSize = true;
+            this.guestLastNameLabel.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guestLastNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
+            this.guestLastNameLabel.Location = new System.Drawing.Point(57, 140);
+            this.guestLastNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.guestLastNameLabel.MinimumSize = new System.Drawing.Size(71, 25);
+            this.guestLastNameLabel.Name = "guestLastNameLabel";
+            this.guestLastNameLabel.Size = new System.Drawing.Size(183, 25);
+            this.guestLastNameLabel.TabIndex = 15;
+            this.guestLastNameLabel.Text = "Guest Last Name:";
+            // 
+            // guestLastNameTextBox
+            // 
+            this.guestLastNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(141)))), ((int)(((byte)(183)))));
+            this.guestLastNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.guestLastNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guestLastNameTextBox.ForeColor = System.Drawing.Color.Gainsboro;
+            this.guestLastNameTextBox.Location = new System.Drawing.Point(308, 138);
+            this.guestLastNameTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.guestLastNameTextBox.MinimumSize = new System.Drawing.Size(71, 20);
+            this.guestLastNameTextBox.Name = "guestLastNameTextBox";
+            this.guestLastNameTextBox.Size = new System.Drawing.Size(364, 23);
+            this.guestLastNameTextBox.TabIndex = 16;
+            this.guestLastNameTextBox.Text = "Guest Last Name";
+            // 
+            // invalidGuestFirstNameLabel
+            // 
+            this.invalidGuestFirstNameLabel.AutoSize = true;
+            this.invalidGuestFirstNameLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invalidGuestFirstNameLabel.ForeColor = System.Drawing.Color.Red;
+            this.invalidGuestFirstNameLabel.Location = new System.Drawing.Point(311, 110);
+            this.invalidGuestFirstNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.invalidGuestFirstNameLabel.MinimumSize = new System.Drawing.Size(365, 16);
+            this.invalidGuestFirstNameLabel.Name = "invalidGuestFirstNameLabel";
+            this.invalidGuestFirstNameLabel.Size = new System.Drawing.Size(365, 23);
+            this.invalidGuestFirstNameLabel.TabIndex = 9;
+            this.invalidGuestFirstNameLabel.Text = "Invalid Guest First Name.";
+            this.invalidGuestFirstNameLabel.Visible = false;
+            // 
+            // guestFirstNameUnderlinePanel
+            // 
+            this.guestFirstNameUnderlinePanel.BackColor = System.Drawing.Color.White;
+            this.guestFirstNameUnderlinePanel.ForeColor = System.Drawing.Color.White;
+            this.guestFirstNameUnderlinePanel.Location = new System.Drawing.Point(310, 104);
+            this.guestFirstNameUnderlinePanel.Margin = new System.Windows.Forms.Padding(4);
+            this.guestFirstNameUnderlinePanel.Name = "guestFirstNameUnderlinePanel";
+            this.guestFirstNameUnderlinePanel.Size = new System.Drawing.Size(365, 2);
+            this.guestFirstNameUnderlinePanel.TabIndex = 8;
+            // 
+            // guestFirstNameLabel
+            // 
+            this.guestFirstNameLabel.AutoSize = true;
+            this.guestFirstNameLabel.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guestFirstNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
+            this.guestFirstNameLabel.Location = new System.Drawing.Point(57, 82);
+            this.guestFirstNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.guestFirstNameLabel.MinimumSize = new System.Drawing.Size(71, 25);
+            this.guestFirstNameLabel.Name = "guestFirstNameLabel";
+            this.guestFirstNameLabel.Size = new System.Drawing.Size(186, 25);
+            this.guestFirstNameLabel.TabIndex = 6;
+            this.guestFirstNameLabel.Text = "Guest First Name:";
+            // 
+            // guestFirstNameTextBox
+            // 
+            this.guestFirstNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(141)))), ((int)(((byte)(183)))));
+            this.guestFirstNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.guestFirstNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guestFirstNameTextBox.ForeColor = System.Drawing.Color.Gainsboro;
+            this.guestFirstNameTextBox.Location = new System.Drawing.Point(307, 82);
+            this.guestFirstNameTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.guestFirstNameTextBox.MinimumSize = new System.Drawing.Size(71, 20);
+            this.guestFirstNameTextBox.Name = "guestFirstNameTextBox";
+            this.guestFirstNameTextBox.Size = new System.Drawing.Size(364, 23);
+            this.guestFirstNameTextBox.TabIndex = 7;
+            this.guestFirstNameTextBox.Text = "Guest First Name";
+            // 
+            // frontDeskListBox
+            // 
+            this.frontDeskListBox.FormattingEnabled = true;
+            this.frontDeskListBox.ItemHeight = 16;
+            this.frontDeskListBox.Location = new System.Drawing.Point(337, 99);
+            this.frontDeskListBox.Name = "frontDeskListBox";
+            this.frontDeskListBox.Size = new System.Drawing.Size(225, 84);
+            this.frontDeskListBox.TabIndex = 19;
+            // 
             // FrontDeskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(141)))), ((int)(((byte)(183)))));
-            this.ClientSize = new System.Drawing.Size(1818, 753);
+            this.ClientSize = new System.Drawing.Size(1182, 603);
             this.Controls.Add(this.makeAReservationButton);
             this.Controls.Add(this.addAGuestButton);
             this.Controls.Add(this.kingWilliamHotelPictureBox);
@@ -478,19 +659,20 @@ namespace ApplicationDesign
             this.Controls.Add(this.frontDeskLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximumSize = new System.Drawing.Size(1836, 800);
-            this.MinimumSize = new System.Drawing.Size(1836, 800);
+            this.MaximumSize = new System.Drawing.Size(1200, 650);
+            this.MinimumSize = new System.Drawing.Size(1200, 650);
             this.Name = "FrontDeskForm";
             this.Text = "FrontDeskForm";
+            this.Load += new System.EventHandler(this.FrontDeskForm_Load);
             this.reservationIDPanel.ResumeLayout(false);
             this.reservationIDPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reservationIDPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.retrieveReservationDGV)).EndInit();
             this.reservationsPanel.ResumeLayout(false);
-            this.reservationsPanel.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kingWilliamHotelPictureBox)).EndInit();
+            this.employeeFirstNamePanel.ResumeLayout(false);
+            this.employeeFirstNamePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -506,16 +688,6 @@ namespace ApplicationDesign
         private System.Windows.Forms.Label reservationIDLabel;
         private System.Windows.Forms.TextBox reservationIDTextBox;
         private System.Windows.Forms.Label reservationsLabel;
-        private System.Windows.Forms.DataGridView retrieveReservationDGV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clientFirstName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clientLastName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clientEmail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roomNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roomType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roomDesc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roomReady;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reservationStartDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reservationEndDate;
         private System.Windows.Forms.Button updateReservationButton;
         private System.Windows.Forms.Button deleteReservationButton;
         private System.Windows.Forms.Panel reservationsPanel;
@@ -537,5 +709,25 @@ namespace ApplicationDesign
         private System.Windows.Forms.ToolTip updateReservationToolTip;
         private System.Windows.Forms.ToolTip deleteReservationToolTip;
         private System.Windows.Forms.ToolTip findGuestToolTip;
+        private System.Windows.Forms.ListBox frontDeskListBox;
+        private System.Windows.Forms.Panel employeeFirstNamePanel;
+        private System.Windows.Forms.DateTimePicker reservationEndDateDTP;
+        private System.Windows.Forms.Label reservationEndDateLabel;
+        private System.Windows.Forms.Label reservationStartDateLabel;
+        private System.Windows.Forms.DateTimePicker reservationStartDateDTP;
+        private System.Windows.Forms.ListBox guestRoomNumberListBox;
+        private System.Windows.Forms.Label guestRoomNumberLabel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label invalidGuestLastNameLabel;
+        private System.Windows.Forms.Panel guestLastNameUnderlinePanel;
+        private System.Windows.Forms.Label guestLastNameLabel;
+        private System.Windows.Forms.TextBox guestLastNameTextBox;
+        private System.Windows.Forms.Label invalidGuestFirstNameLabel;
+        private System.Windows.Forms.Panel guestFirstNameUnderlinePanel;
+        private System.Windows.Forms.Label guestFirstNameLabel;
+        private System.Windows.Forms.TextBox guestFirstNameTextBox;
     }
 }

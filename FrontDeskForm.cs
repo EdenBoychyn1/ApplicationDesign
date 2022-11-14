@@ -52,5 +52,10 @@ namespace ApplicationDesign
             MakeAReservation makeAReservation = new MakeAReservation();
             makeAReservation.Show();
         }
+
+        private void FrontDeskForm_Load(object sender, EventArgs e)
+        {
+            this.MinimumSize = new System.Drawing.Size(1200, 650);
+        }
     }
 }

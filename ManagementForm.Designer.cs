@@ -31,7 +31,6 @@ namespace ApplicationDesign
         {
             this.components = new System.ComponentModel.Container();
             this.managementSignUpLabel = new System.Windows.Forms.Label();
-            this.managementDesignPanel = new System.Windows.Forms.Panel();
             this.employeeFirstNamePanel = new System.Windows.Forms.Panel();
             this.invalidEmployeeFirstNameLabel = new System.Windows.Forms.Label();
             this.employeeFirstNameUnderlinePanel = new System.Windows.Forms.Panel();
@@ -87,20 +86,12 @@ namespace ApplicationDesign
             this.managementSignUpLabel.AutoSize = true;
             this.managementSignUpLabel.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.managementSignUpLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.managementSignUpLabel.Location = new System.Drawing.Point(797, 86);
+            this.managementSignUpLabel.Location = new System.Drawing.Point(550, 90);
             this.managementSignUpLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.managementSignUpLabel.Name = "managementSignUpLabel";
             this.managementSignUpLabel.Size = new System.Drawing.Size(286, 38);
             this.managementSignUpLabel.TabIndex = 2;
             this.managementSignUpLabel.Text = "Employee Sign Up";
-            // 
-            // managementDesignPanel
-            // 
-            this.managementDesignPanel.Location = new System.Drawing.Point(15, 167);
-            this.managementDesignPanel.Margin = new System.Windows.Forms.Padding(4);
-            this.managementDesignPanel.Name = "managementDesignPanel";
-            this.managementDesignPanel.Size = new System.Drawing.Size(392, 724);
-            this.managementDesignPanel.TabIndex = 4;
             // 
             // employeeFirstNamePanel
             // 
@@ -109,7 +100,7 @@ namespace ApplicationDesign
             this.employeeFirstNamePanel.Controls.Add(this.employeeFirstNamePictureBox);
             this.employeeFirstNamePanel.Controls.Add(this.employeeFirstNameLabel);
             this.employeeFirstNamePanel.Controls.Add(this.employeeFirstNameTextBox);
-            this.employeeFirstNamePanel.Location = new System.Drawing.Point(503, 167);
+            this.employeeFirstNamePanel.Location = new System.Drawing.Point(310, 180);
             this.employeeFirstNamePanel.Margin = new System.Windows.Forms.Padding(4);
             this.employeeFirstNamePanel.Name = "employeeFirstNamePanel";
             this.employeeFirstNamePanel.Size = new System.Drawing.Size(785, 118);
@@ -184,7 +175,7 @@ namespace ApplicationDesign
             this.emplpyeeLastNamePanel.Controls.Add(this.employeeLastNamePictureBox);
             this.emplpyeeLastNamePanel.Controls.Add(this.employeeLastNameLabel);
             this.emplpyeeLastNamePanel.Controls.Add(this.employeeLastNameTextBox);
-            this.emplpyeeLastNamePanel.Location = new System.Drawing.Point(503, 293);
+            this.emplpyeeLastNamePanel.Location = new System.Drawing.Point(310, 306);
             this.emplpyeeLastNamePanel.Margin = new System.Windows.Forms.Padding(4);
             this.emplpyeeLastNamePanel.Name = "emplpyeeLastNamePanel";
             this.emplpyeeLastNamePanel.Size = new System.Drawing.Size(785, 118);
@@ -249,7 +240,7 @@ namespace ApplicationDesign
             this.employeeLastNameTextBox.Name = "employeeLastNameTextBox";
             this.employeeLastNameTextBox.Size = new System.Drawing.Size(364, 23);
             this.employeeLastNameTextBox.TabIndex = 12;
-            this.employeeLastNameTextBox.Text = "Enter Last Name";
+            this.employeeLastNameTextBox.Text = "Enter Employee Last Name";
             this.employeeLastNameToolTip.SetToolTip(this.employeeLastNameTextBox, "Add employee\'s last name.");
             // 
             // employeeSecurityLevelPanel
@@ -258,7 +249,7 @@ namespace ApplicationDesign
             this.employeeSecurityLevelPanel.Controls.Add(this.securityLevelDropDownBox);
             this.employeeSecurityLevelPanel.Controls.Add(this.employeeSecurityLevelPictureBox);
             this.employeeSecurityLevelPanel.Controls.Add(this.employeeSecurityLevelLabel);
-            this.employeeSecurityLevelPanel.Location = new System.Drawing.Point(503, 418);
+            this.employeeSecurityLevelPanel.Location = new System.Drawing.Point(310, 431);
             this.employeeSecurityLevelPanel.Margin = new System.Windows.Forms.Padding(4);
             this.employeeSecurityLevelPanel.Name = "employeeSecurityLevelPanel";
             this.employeeSecurityLevelPanel.Size = new System.Drawing.Size(785, 118);
@@ -330,7 +321,7 @@ namespace ApplicationDesign
             this.employeePasswordPanel.Controls.Add(this.employeePasswordPictureBox);
             this.employeePasswordPanel.Controls.Add(this.employeePasswordLabel);
             this.employeePasswordPanel.Controls.Add(this.employeePasswordTextBox);
-            this.employeePasswordPanel.Location = new System.Drawing.Point(503, 544);
+            this.employeePasswordPanel.Location = new System.Drawing.Point(310, 557);
             this.employeePasswordPanel.Margin = new System.Windows.Forms.Padding(4);
             this.employeePasswordPanel.Name = "employeePasswordPanel";
             this.employeePasswordPanel.Size = new System.Drawing.Size(785, 118);
@@ -396,7 +387,7 @@ namespace ApplicationDesign
             this.employeePasswordTextBox.Name = "employeePasswordTextBox";
             this.employeePasswordTextBox.Size = new System.Drawing.Size(364, 23);
             this.employeePasswordTextBox.TabIndex = 21;
-            this.employeePasswordTextBox.Text = "Enter Password";
+            this.employeePasswordTextBox.Text = "Enter Employee Password";
             // 
             // confirmPasswordPanel
             // 
@@ -405,7 +396,7 @@ namespace ApplicationDesign
             this.confirmPasswordPanel.Controls.Add(this.confirmPasswordPictureBox);
             this.confirmPasswordPanel.Controls.Add(this.confirmPasswordLabel);
             this.confirmPasswordPanel.Controls.Add(this.confirmPasswordTextBox);
-            this.confirmPasswordPanel.Location = new System.Drawing.Point(503, 670);
+            this.confirmPasswordPanel.Location = new System.Drawing.Point(310, 683);
             this.confirmPasswordPanel.Margin = new System.Windows.Forms.Padding(4);
             this.confirmPasswordPanel.Name = "confirmPasswordPanel";
             this.confirmPasswordPanel.Size = new System.Drawing.Size(785, 118);
@@ -471,7 +462,7 @@ namespace ApplicationDesign
             this.confirmPasswordTextBox.Name = "confirmPasswordTextBox";
             this.confirmPasswordTextBox.Size = new System.Drawing.Size(364, 23);
             this.confirmPasswordTextBox.TabIndex = 26;
-            this.confirmPasswordTextBox.Text = "Confirm Password";
+            this.confirmPasswordTextBox.Text = "Confirm Employee Password";
             // 
             // signUpButton
             // 
@@ -480,7 +471,7 @@ namespace ApplicationDesign
             this.signUpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.signUpButton.Font = new System.Drawing.Font("Times New Roman", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.signUpButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.signUpButton.Location = new System.Drawing.Point(776, 818);
+            this.signUpButton.Location = new System.Drawing.Point(583, 831);
             this.signUpButton.Margin = new System.Windows.Forms.Padding(4);
             this.signUpButton.Name = "signUpButton";
             this.signUpButton.Size = new System.Drawing.Size(325, 73);
@@ -502,10 +493,11 @@ namespace ApplicationDesign
             // 
             // ManagementForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(141)))), ((int)(((byte)(183)))));
-            this.ClientSize = new System.Drawing.Size(1405, 941);
+            this.ClientSize = new System.Drawing.Size(982, 853);
             this.Controls.Add(this.signUpButton);
             this.Controls.Add(this.confirmPasswordPanel);
             this.Controls.Add(this.kingWilliamHotelPictureBox);
@@ -513,15 +505,13 @@ namespace ApplicationDesign
             this.Controls.Add(this.employeeSecurityLevelPanel);
             this.Controls.Add(this.emplpyeeLastNamePanel);
             this.Controls.Add(this.employeeFirstNamePanel);
-            this.Controls.Add(this.managementDesignPanel);
             this.Controls.Add(this.managementSignUpLabel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximumSize = new System.Drawing.Size(1467, 1046);
-            this.MinimumSize = new System.Drawing.Size(1333, 923);
+            this.MinimumSize = new System.Drawing.Size(1000, 900);
             this.Name = "ManagementForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ManagementForm";
+            this.Load += new System.EventHandler(this.ManagementForm_Load);
             this.employeeFirstNamePanel.ResumeLayout(false);
             this.employeeFirstNamePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.employeeFirstNamePictureBox)).EndInit();
@@ -546,7 +536,6 @@ namespace ApplicationDesign
         #endregion
         private System.Windows.Forms.Label managementSignUpLabel;
         private System.Windows.Forms.PictureBox kingWilliamHotelPictureBox;
-        private System.Windows.Forms.Panel managementDesignPanel;
         private System.Windows.Forms.Panel employeeFirstNamePanel;
         private System.Windows.Forms.Label invalidEmployeeFirstNameLabel;
         private System.Windows.Forms.Panel employeeFirstNameUnderlinePanel;

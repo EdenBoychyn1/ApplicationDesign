@@ -28,5 +28,10 @@ namespace ApplicationDesign
         {
             InitializeComponent();
         }
+
+        private void ManagementForm_Load(object sender, EventArgs e)
+        {
+            this.MinimumSize = new System.Drawing.Size(1000, 900);
+        }
     }
 }
