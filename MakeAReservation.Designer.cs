@@ -59,6 +59,7 @@ namespace ApplicationDesign
             this.findGuestLabel = new System.Windows.Forms.Label();
             this.findGuestListBox = new System.Windows.Forms.ListBox();
             this.findGuest1Label = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.conciergeFormPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kingWilliamHotelPictureBox)).BeginInit();
@@ -264,6 +265,7 @@ namespace ApplicationDesign
             this.panel3.Controls.Add(this.findGuestButton);
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.textBox2);
             this.panel3.Controls.Add(this.textBox1);
             this.panel3.Controls.Add(this.lastNameToolTip);
             this.panel3.Controls.Add(this.findGuestLabel);
@@ -375,6 +377,20 @@ namespace ApplicationDesign
             this.findGuest1Label.Text = "Select Guest:";
             this.findGuest1Label.Click += new System.EventHandler(this.findGuest1Label_Click);
             // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(141)))), ((int)(((byte)(183)))));
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.Gainsboro;
+            this.textBox2.Location = new System.Drawing.Point(179, 32);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox2.MinimumSize = new System.Drawing.Size(71, 20);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(267, 23);
+            this.textBox2.TabIndex = 14;
+            this.textBox2.Text = "Enter Guest Last Name";
+            // 
             // MakeAReservation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -429,5 +445,6 @@ namespace ApplicationDesign
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lastNameToolTip;
         private System.Windows.Forms.Label findGuestLabel;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

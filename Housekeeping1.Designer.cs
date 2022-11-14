@@ -34,19 +34,21 @@ namespace ApplicationDesign
             this.housekeepingLabel = new System.Windows.Forms.Label();
             this.kingWilliamHotelPictureBox = new System.Windows.Forms.PictureBox();
             this.housekeepingRoomPanel = new System.Windows.Forms.Panel();
+            this.roomStatusButton = new System.Windows.Forms.Button();
             this.outOfOrderCheckBox = new System.Windows.Forms.CheckBox();
             this.roomDirtyCheckBox = new System.Windows.Forms.CheckBox();
             this.housekeepingRoomsAvailableComboBox = new System.Windows.Forms.ComboBox();
             this.housekeepingRoomsLabel = new System.Windows.Forms.Label();
-            this.housekeepingRoomTypeDropDownBox = new System.Windows.Forms.ComboBox();
             this.housekeepingRoomTypeLabel = new System.Windows.Forms.Label();
             this.houskeepingRoomLabel = new System.Windows.Forms.Label();
-            this.roomStatusButton = new System.Windows.Forms.Button();
             this.roomTypeToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.roomToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.roomDirtyToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.outOfOrderToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.submitStatusToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.housekeepingLogoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kingWilliamHotelPictureBox)).BeginInit();
             this.housekeepingRoomPanel.SuspendLayout();
@@ -90,12 +92,14 @@ namespace ApplicationDesign
             // 
             // housekeepingRoomPanel
             // 
+            this.housekeepingRoomPanel.Controls.Add(this.panel5);
+            this.housekeepingRoomPanel.Controls.Add(this.label2);
+            this.housekeepingRoomPanel.Controls.Add(this.textBox2);
             this.housekeepingRoomPanel.Controls.Add(this.roomStatusButton);
             this.housekeepingRoomPanel.Controls.Add(this.outOfOrderCheckBox);
             this.housekeepingRoomPanel.Controls.Add(this.roomDirtyCheckBox);
             this.housekeepingRoomPanel.Controls.Add(this.housekeepingRoomsAvailableComboBox);
             this.housekeepingRoomPanel.Controls.Add(this.housekeepingRoomsLabel);
-            this.housekeepingRoomPanel.Controls.Add(this.housekeepingRoomTypeDropDownBox);
             this.housekeepingRoomPanel.Controls.Add(this.housekeepingRoomTypeLabel);
             this.housekeepingRoomPanel.Controls.Add(this.houskeepingRoomLabel);
             this.housekeepingRoomPanel.Location = new System.Drawing.Point(286, 157);
@@ -103,6 +107,22 @@ namespace ApplicationDesign
             this.housekeepingRoomPanel.Name = "housekeepingRoomPanel";
             this.housekeepingRoomPanel.Size = new System.Drawing.Size(526, 292);
             this.housekeepingRoomPanel.TabIndex = 2;
+            // 
+            // roomStatusButton
+            // 
+            this.roomStatusButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
+            this.roomStatusButton.FlatAppearance.BorderSize = 6;
+            this.roomStatusButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.roomStatusButton.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roomStatusButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
+            this.roomStatusButton.Location = new System.Drawing.Point(346, 240);
+            this.roomStatusButton.Margin = new System.Windows.Forms.Padding(4);
+            this.roomStatusButton.Name = "roomStatusButton";
+            this.roomStatusButton.Size = new System.Drawing.Size(180, 52);
+            this.roomStatusButton.TabIndex = 10;
+            this.roomStatusButton.Text = "Submit Room Status";
+            this.submitStatusToolTip.SetToolTip(this.roomStatusButton, "Select Submit Room Status to submit the status of the room to the database.");
+            this.roomStatusButton.UseVisualStyleBackColor = true;
             // 
             // outOfOrderCheckBox
             // 
@@ -137,7 +157,7 @@ namespace ApplicationDesign
             this.housekeepingRoomsAvailableComboBox.ForeColor = System.Drawing.Color.White;
             this.housekeepingRoomsAvailableComboBox.FormattingEnabled = true;
             this.housekeepingRoomsAvailableComboBox.ItemHeight = 16;
-            this.housekeepingRoomsAvailableComboBox.Location = new System.Drawing.Point(249, 110);
+            this.housekeepingRoomsAvailableComboBox.Location = new System.Drawing.Point(249, 71);
             this.housekeepingRoomsAvailableComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.housekeepingRoomsAvailableComboBox.MaximumSize = new System.Drawing.Size(265, 0);
             this.housekeepingRoomsAvailableComboBox.MinimumSize = new System.Drawing.Size(265, 0);
@@ -150,7 +170,7 @@ namespace ApplicationDesign
             this.housekeepingRoomsLabel.AutoSize = true;
             this.housekeepingRoomsLabel.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.housekeepingRoomsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.housekeepingRoomsLabel.Location = new System.Drawing.Point(24, 109);
+            this.housekeepingRoomsLabel.Location = new System.Drawing.Point(24, 71);
             this.housekeepingRoomsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.housekeepingRoomsLabel.MinimumSize = new System.Drawing.Size(71, 25);
             this.housekeepingRoomsLabel.Name = "housekeepingRoomsLabel";
@@ -159,30 +179,12 @@ namespace ApplicationDesign
             this.housekeepingRoomsLabel.Text = "Rooms:";
             this.roomToolTip.SetToolTip(this.housekeepingRoomsLabel, "Find room in drop down menu.");
             // 
-            // housekeepingRoomTypeDropDownBox
-            // 
-            this.housekeepingRoomTypeDropDownBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(141)))), ((int)(((byte)(183)))));
-            this.housekeepingRoomTypeDropDownBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.housekeepingRoomTypeDropDownBox.ForeColor = System.Drawing.Color.White;
-            this.housekeepingRoomTypeDropDownBox.FormattingEnabled = true;
-            this.housekeepingRoomTypeDropDownBox.Items.AddRange(new object[] {
-            "Single Room",
-            "Double Room",
-            "Suite"});
-            this.housekeepingRoomTypeDropDownBox.Location = new System.Drawing.Point(249, 71);
-            this.housekeepingRoomTypeDropDownBox.Margin = new System.Windows.Forms.Padding(4);
-            this.housekeepingRoomTypeDropDownBox.MaximumSize = new System.Drawing.Size(265, 0);
-            this.housekeepingRoomTypeDropDownBox.MinimumSize = new System.Drawing.Size(265, 0);
-            this.housekeepingRoomTypeDropDownBox.Name = "housekeepingRoomTypeDropDownBox";
-            this.housekeepingRoomTypeDropDownBox.Size = new System.Drawing.Size(265, 24);
-            this.housekeepingRoomTypeDropDownBox.TabIndex = 5;
-            // 
             // housekeepingRoomTypeLabel
             // 
             this.housekeepingRoomTypeLabel.AutoSize = true;
             this.housekeepingRoomTypeLabel.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.housekeepingRoomTypeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.housekeepingRoomTypeLabel.Location = new System.Drawing.Point(24, 70);
+            this.housekeepingRoomTypeLabel.Location = new System.Drawing.Point(24, 110);
             this.housekeepingRoomTypeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.housekeepingRoomTypeLabel.MinimumSize = new System.Drawing.Size(71, 25);
             this.housekeepingRoomTypeLabel.Name = "housekeepingRoomTypeLabel";
@@ -203,21 +205,44 @@ namespace ApplicationDesign
             this.houskeepingRoomLabel.TabIndex = 3;
             this.houskeepingRoomLabel.Text = "Find Room";
             // 
-            // roomStatusButton
+            // panel5
             // 
-            this.roomStatusButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.roomStatusButton.FlatAppearance.BorderSize = 6;
-            this.roomStatusButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roomStatusButton.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roomStatusButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.roomStatusButton.Location = new System.Drawing.Point(346, 240);
-            this.roomStatusButton.Margin = new System.Windows.Forms.Padding(4);
-            this.roomStatusButton.Name = "roomStatusButton";
-            this.roomStatusButton.Size = new System.Drawing.Size(180, 52);
-            this.roomStatusButton.TabIndex = 10;
-            this.roomStatusButton.Text = "Submit Room Status";
-            this.submitStatusToolTip.SetToolTip(this.roomStatusButton, "Select Submit Room Status to submit the status of the room to the database.");
-            this.roomStatusButton.UseVisualStyleBackColor = true;
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.ForeColor = System.Drawing.Color.White;
+            this.panel5.Location = new System.Drawing.Point(249, 141);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
+            this.panel5.MinimumSize = new System.Drawing.Size(267, 2);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(267, 2);
+            this.panel5.TabIndex = 18;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(255, 147);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.MinimumSize = new System.Drawing.Size(232, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(232, 23);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Invalid Room Number";
+            this.label2.Visible = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(141)))), ((int)(((byte)(183)))));
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.Gainsboro;
+            this.textBox2.Location = new System.Drawing.Point(249, 110);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox2.MinimumSize = new System.Drawing.Size(71, 20);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(267, 23);
+            this.textBox2.TabIndex = 17;
+            this.textBox2.Text = "Autogenerates Room Type";
             // 
             // HousekeepingForm
             // 
@@ -251,7 +276,6 @@ namespace ApplicationDesign
         private System.Windows.Forms.CheckBox roomDirtyCheckBox;
         private System.Windows.Forms.ComboBox housekeepingRoomsAvailableComboBox;
         private System.Windows.Forms.Label housekeepingRoomsLabel;
-        private System.Windows.Forms.ComboBox housekeepingRoomTypeDropDownBox;
         private System.Windows.Forms.Label housekeepingRoomTypeLabel;
         private System.Windows.Forms.Label houskeepingRoomLabel;
         private System.Windows.Forms.Button roomStatusButton;
@@ -260,5 +284,8 @@ namespace ApplicationDesign
         private System.Windows.Forms.ToolTip roomDirtyToolTip;
         private System.Windows.Forms.ToolTip roomToolTip;
         private System.Windows.Forms.ToolTip roomTypeToolTip;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
