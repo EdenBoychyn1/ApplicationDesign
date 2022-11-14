@@ -40,16 +40,6 @@ namespace ApplicationDesign
             this.itemDescriptionLabel = new System.Windows.Forms.Label();
             this.itemDescriptionTextBox = new System.Windows.Forms.TextBox();
             this.itemDescriptionLinePanel = new System.Windows.Forms.Panel();
-            this.retrieveReservationDGV = new System.Windows.Forms.DataGridView();
-            this.clientFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomReady = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reservationStartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reservationEndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reservationIDPanel = new System.Windows.Forms.Panel();
             this.findReservationButton = new System.Windows.Forms.Button();
             this.invalidReservationIDLabel = new System.Windows.Forms.Label();
@@ -62,9 +52,10 @@ namespace ApplicationDesign
             this.itemDescriptionToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.findReservationToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.addItemToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.reservationListBox = new System.Windows.Forms.ListBox();
+            this.guestReservationLabel = new System.Windows.Forms.Label();
             this.conciergeFormPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kingWilliamHotelPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.retrieveReservationDGV)).BeginInit();
             this.reservationIDPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reservationIDPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -76,7 +67,7 @@ namespace ApplicationDesign
             this.conciergeFormPanel.Location = new System.Drawing.Point(16, 15);
             this.conciergeFormPanel.Margin = new System.Windows.Forms.Padding(4);
             this.conciergeFormPanel.Name = "conciergeFormPanel";
-            this.conciergeFormPanel.Size = new System.Drawing.Size(1604, 132);
+            this.conciergeFormPanel.Size = new System.Drawing.Size(1152, 132);
             this.conciergeFormPanel.TabIndex = 0;
             // 
             // conciergeLabel
@@ -84,7 +75,7 @@ namespace ApplicationDesign
             this.conciergeLabel.AutoSize = true;
             this.conciergeLabel.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.conciergeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.conciergeLabel.Location = new System.Drawing.Point(811, 52);
+            this.conciergeLabel.Location = new System.Drawing.Point(571, 60);
             this.conciergeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.conciergeLabel.Name = "conciergeLabel";
             this.conciergeLabel.Size = new System.Drawing.Size(291, 38);
@@ -116,7 +107,7 @@ namespace ApplicationDesign
             this.itemInvoiceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.itemInvoiceButton.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemInvoiceButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.itemInvoiceButton.Location = new System.Drawing.Point(1607, 600);
+            this.itemInvoiceButton.Location = new System.Drawing.Point(984, 564);
             this.itemInvoiceButton.Margin = new System.Windows.Forms.Padding(4);
             this.itemInvoiceButton.Name = "itemInvoiceButton";
             this.itemInvoiceButton.Size = new System.Drawing.Size(180, 52);
@@ -149,7 +140,7 @@ namespace ApplicationDesign
             "Long-Distance Phone Call",
             "Movie Rental",
             "Outdoor Excursions"});
-            this.itemCodeDropDownBox.Location = new System.Drawing.Point(556, 534);
+            this.itemCodeDropDownBox.Location = new System.Drawing.Point(594, 535);
             this.itemCodeDropDownBox.Margin = new System.Windows.Forms.Padding(4);
             this.itemCodeDropDownBox.MaximumSize = new System.Drawing.Size(265, 0);
             this.itemCodeDropDownBox.MinimumSize = new System.Drawing.Size(265, 0);
@@ -162,7 +153,7 @@ namespace ApplicationDesign
             this.itemDescriptionLabel.AutoSize = true;
             this.itemDescriptionLabel.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemDescriptionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.itemDescriptionLabel.Location = new System.Drawing.Point(852, 535);
+            this.itemDescriptionLabel.Location = new System.Drawing.Point(408, 591);
             this.itemDescriptionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.itemDescriptionLabel.MinimumSize = new System.Drawing.Size(71, 25);
             this.itemDescriptionLabel.Name = "itemDescriptionLabel";
@@ -177,7 +168,7 @@ namespace ApplicationDesign
             this.itemDescriptionTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.itemDescriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemDescriptionTextBox.ForeColor = System.Drawing.Color.Gainsboro;
-            this.itemDescriptionTextBox.Location = new System.Drawing.Point(1052, 527);
+            this.itemDescriptionTextBox.Location = new System.Drawing.Point(594, 589);
             this.itemDescriptionTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.itemDescriptionTextBox.MinimumSize = new System.Drawing.Size(53, 20);
             this.itemDescriptionTextBox.Name = "itemDescriptionTextBox";
@@ -189,109 +180,27 @@ namespace ApplicationDesign
             // 
             this.itemDescriptionLinePanel.BackColor = System.Drawing.Color.White;
             this.itemDescriptionLinePanel.ForeColor = System.Drawing.Color.White;
-            this.itemDescriptionLinePanel.Location = new System.Drawing.Point(1052, 558);
+            this.itemDescriptionLinePanel.Location = new System.Drawing.Point(593, 614);
             this.itemDescriptionLinePanel.Margin = new System.Windows.Forms.Padding(4);
             this.itemDescriptionLinePanel.MinimumSize = new System.Drawing.Size(267, 2);
             this.itemDescriptionLinePanel.Name = "itemDescriptionLinePanel";
             this.itemDescriptionLinePanel.Size = new System.Drawing.Size(267, 2);
             this.itemDescriptionLinePanel.TabIndex = 14;
             // 
-            // retrieveReservationDGV
-            // 
-            this.retrieveReservationDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.retrieveReservationDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clientFirstName,
-            this.clientLastName,
-            this.clientEmail,
-            this.roomNumber,
-            this.roomType,
-            this.roomDesc,
-            this.roomReady,
-            this.reservationStartDate,
-            this.reservationEndDate});
-            this.retrieveReservationDGV.Location = new System.Drawing.Point(25, 110);
-            this.retrieveReservationDGV.Margin = new System.Windows.Forms.Padding(4);
-            this.retrieveReservationDGV.Name = "retrieveReservationDGV";
-            this.retrieveReservationDGV.RowHeadersWidth = 51;
-            this.retrieveReservationDGV.Size = new System.Drawing.Size(1447, 126);
-            this.retrieveReservationDGV.TabIndex = 8;
-            // 
-            // clientFirstName
-            // 
-            this.clientFirstName.HeaderText = "Guest First Name";
-            this.clientFirstName.MinimumWidth = 6;
-            this.clientFirstName.Name = "clientFirstName";
-            this.clientFirstName.Width = 125;
-            // 
-            // clientLastName
-            // 
-            this.clientLastName.HeaderText = "Guest Last Name";
-            this.clientLastName.MinimumWidth = 6;
-            this.clientLastName.Name = "clientLastName";
-            this.clientLastName.Width = 125;
-            // 
-            // clientEmail
-            // 
-            this.clientEmail.HeaderText = "Guest Email";
-            this.clientEmail.MinimumWidth = 6;
-            this.clientEmail.Name = "clientEmail";
-            this.clientEmail.Width = 125;
-            // 
-            // roomNumber
-            // 
-            this.roomNumber.HeaderText = "Room Number";
-            this.roomNumber.MinimumWidth = 6;
-            this.roomNumber.Name = "roomNumber";
-            this.roomNumber.Width = 125;
-            // 
-            // roomType
-            // 
-            this.roomType.HeaderText = "Room Type";
-            this.roomType.MinimumWidth = 6;
-            this.roomType.Name = "roomType";
-            this.roomType.Width = 125;
-            // 
-            // roomDesc
-            // 
-            this.roomDesc.HeaderText = "Room Description";
-            this.roomDesc.MinimumWidth = 6;
-            this.roomDesc.Name = "roomDesc";
-            this.roomDesc.Width = 125;
-            // 
-            // roomReady
-            // 
-            this.roomReady.HeaderText = "Room Ready";
-            this.roomReady.MinimumWidth = 6;
-            this.roomReady.Name = "roomReady";
-            this.roomReady.Width = 125;
-            // 
-            // reservationStartDate
-            // 
-            this.reservationStartDate.HeaderText = "Reservation Start Date";
-            this.reservationStartDate.MinimumWidth = 6;
-            this.reservationStartDate.Name = "reservationStartDate";
-            this.reservationStartDate.Width = 125;
-            // 
-            // reservationEndDate
-            // 
-            this.reservationEndDate.HeaderText = "Reservation End Date";
-            this.reservationEndDate.MinimumWidth = 6;
-            this.reservationEndDate.Name = "reservationEndDate";
-            this.reservationEndDate.Width = 125;
-            // 
             // reservationIDPanel
             // 
+            this.reservationIDPanel.Controls.Add(this.guestReservationLabel);
+            this.reservationIDPanel.Controls.Add(this.reservationListBox);
             this.reservationIDPanel.Controls.Add(this.findReservationButton);
             this.reservationIDPanel.Controls.Add(this.invalidReservationIDLabel);
             this.reservationIDPanel.Controls.Add(this.reservationIDLinePanel);
-            this.reservationIDPanel.Controls.Add(this.retrieveReservationDGV);
             this.reservationIDPanel.Controls.Add(this.reservationIDPictureBox);
             this.reservationIDPanel.Controls.Add(this.reservationIDLabel);
             this.reservationIDPanel.Controls.Add(this.reservationIDTextBox);
             this.reservationIDPanel.Location = new System.Drawing.Point(315, 171);
             this.reservationIDPanel.Margin = new System.Windows.Forms.Padding(4);
             this.reservationIDPanel.Name = "reservationIDPanel";
-            this.reservationIDPanel.Size = new System.Drawing.Size(1476, 313);
+            this.reservationIDPanel.Size = new System.Drawing.Size(853, 313);
             this.reservationIDPanel.TabIndex = 3;
             // 
             // findReservationButton
@@ -301,7 +210,7 @@ namespace ApplicationDesign
             this.findReservationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.findReservationButton.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.findReservationButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.findReservationButton.Location = new System.Drawing.Point(1292, 257);
+            this.findReservationButton.Location = new System.Drawing.Point(669, 231);
             this.findReservationButton.Margin = new System.Windows.Forms.Padding(4);
             this.findReservationButton.Name = "findReservationButton";
             this.findReservationButton.Size = new System.Drawing.Size(180, 52);
@@ -315,7 +224,7 @@ namespace ApplicationDesign
             this.invalidReservationIDLabel.AutoSize = true;
             this.invalidReservationIDLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.invalidReservationIDLabel.ForeColor = System.Drawing.Color.Red;
-            this.invalidReservationIDLabel.Location = new System.Drawing.Point(332, 63);
+            this.invalidReservationIDLabel.Location = new System.Drawing.Point(386, 63);
             this.invalidReservationIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.invalidReservationIDLabel.MinimumSize = new System.Drawing.Size(267, 16);
             this.invalidReservationIDLabel.Name = "invalidReservationIDLabel";
@@ -328,7 +237,7 @@ namespace ApplicationDesign
             // 
             this.reservationIDLinePanel.BackColor = System.Drawing.Color.White;
             this.reservationIDLinePanel.ForeColor = System.Drawing.Color.White;
-            this.reservationIDLinePanel.Location = new System.Drawing.Point(337, 57);
+            this.reservationIDLinePanel.Location = new System.Drawing.Point(385, 58);
             this.reservationIDLinePanel.Margin = new System.Windows.Forms.Padding(4);
             this.reservationIDLinePanel.Name = "reservationIDLinePanel";
             this.reservationIDLinePanel.Size = new System.Drawing.Size(267, 2);
@@ -364,7 +273,7 @@ namespace ApplicationDesign
             this.reservationIDTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.reservationIDTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reservationIDTextBox.ForeColor = System.Drawing.Color.Gainsboro;
-            this.reservationIDTextBox.Location = new System.Drawing.Point(337, 33);
+            this.reservationIDTextBox.Location = new System.Drawing.Point(385, 33);
             this.reservationIDTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.reservationIDTextBox.MinimumSize = new System.Drawing.Size(71, 20);
             this.reservationIDTextBox.Name = "reservationIDTextBox";
@@ -372,12 +281,32 @@ namespace ApplicationDesign
             this.reservationIDTextBox.TabIndex = 5;
             this.reservationIDTextBox.Text = "Enter Reservation ID";
             // 
+            // reservationListBox
+            // 
+            this.reservationListBox.FormattingEnabled = true;
+            this.reservationListBox.ItemHeight = 16;
+            this.reservationListBox.Location = new System.Drawing.Point(385, 103);
+            this.reservationListBox.Name = "reservationListBox";
+            this.reservationListBox.Size = new System.Drawing.Size(268, 180);
+            this.reservationListBox.TabIndex = 10;
+            // 
+            // guestReservationLabel
+            // 
+            this.guestReservationLabel.AutoSize = true;
+            this.guestReservationLabel.Font = new System.Drawing.Font("Times New Roman", 16.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guestReservationLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
+            this.guestReservationLabel.Location = new System.Drawing.Point(79, 103);
+            this.guestReservationLabel.Name = "guestReservationLabel";
+            this.guestReservationLabel.Size = new System.Drawing.Size(261, 32);
+            this.guestReservationLabel.TabIndex = 11;
+            this.guestReservationLabel.Text = "Guest Reservations:";
+            // 
             // ConciergeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(141)))), ((int)(((byte)(183)))));
-            this.ClientSize = new System.Drawing.Size(1815, 682);
+            this.ClientSize = new System.Drawing.Size(1191, 660);
             this.Controls.Add(this.reservationIDPanel);
             this.Controls.Add(this.itemDescriptionLinePanel);
             this.Controls.Add(this.itemDescriptionTextBox);
@@ -394,7 +323,6 @@ namespace ApplicationDesign
             this.conciergeFormPanel.ResumeLayout(false);
             this.conciergeFormPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kingWilliamHotelPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.retrieveReservationDGV)).EndInit();
             this.reservationIDPanel.ResumeLayout(false);
             this.reservationIDPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reservationIDPictureBox)).EndInit();
@@ -415,16 +343,6 @@ namespace ApplicationDesign
         private System.Windows.Forms.Label itemDescriptionLabel;
         private System.Windows.Forms.TextBox itemDescriptionTextBox;
         private System.Windows.Forms.Panel itemDescriptionLinePanel;
-        private System.Windows.Forms.DataGridView retrieveReservationDGV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clientFirstName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clientLastName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clientEmail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roomNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roomType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roomDesc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roomReady;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reservationStartDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reservationEndDate;
         private System.Windows.Forms.Panel reservationIDPanel;
         private System.Windows.Forms.Button findReservationButton;
         private System.Windows.Forms.Label invalidReservationIDLabel;
@@ -437,5 +355,7 @@ namespace ApplicationDesign
         private System.Windows.Forms.ToolTip itemCodeToolTip;
         private System.Windows.Forms.ToolTip itemDescriptionToolTip;
         private System.Windows.Forms.ToolTip findReservationToolTip;
+        private System.Windows.Forms.Label guestReservationLabel;
+        private System.Windows.Forms.ListBox reservationListBox;
     }
 }
