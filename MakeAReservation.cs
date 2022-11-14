@@ -28,5 +28,10 @@ namespace ApplicationDesign
         {
             InitializeComponent();
         }
+
+        private void findGuest1Label_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

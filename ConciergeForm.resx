@@ -141,4 +141,10 @@
   <metadata name="itemDescriptionToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>483, 22</value>
   </metadata>
+  <metadata name="findReservationToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>752, 21</value>
+  </metadata>
+  <metadata name="addItemToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>994, 15</value>
+  </metadata>
 </root>
