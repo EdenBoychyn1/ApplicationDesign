@@ -649,7 +649,7 @@ namespace ApplicationDesign
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(141)))), ((int)(((byte)(183)))));
-            this.ClientSize = new System.Drawing.Size(1182, 603);
+            this.ClientSize = new System.Drawing.Size(1579, 761);
             this.Controls.Add(this.makeAReservationButton);
             this.Controls.Add(this.addAGuestButton);
             this.Controls.Add(this.kingWilliamHotelPictureBox);
@@ -659,7 +659,7 @@ namespace ApplicationDesign
             this.Controls.Add(this.frontDeskLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximumSize = new System.Drawing.Size(1200, 650);
+            this.MaximumSize = new System.Drawing.Size(1800, 900);
             this.MinimumSize = new System.Drawing.Size(1200, 650);
             this.Name = "FrontDeskForm";
             this.Text = "FrontDeskForm";

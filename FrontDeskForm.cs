@@ -1,6 +1,6 @@
 ﻿
 /**
- * Authors:          Eden Boychyn, 100752815' & Angaran Yogeswaran 100754161
+ * Authors:         Eden Boychyn, 100752815 & Angaran Yogeswaran 100754161
  * Date:            October 28th, 2022
  * Description:     This application design demonstrates the potential functionality of the software application. Form1 is used to allow employees to login and according to
  *                  their security level the window that they have access to should display on the screen after signing on. Only Basil (Management) has access to the management

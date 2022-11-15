@@ -280,8 +280,7 @@ namespace ApplicationDesign
             "Security Level 2 - Housekeeping",
             "Security Level 3 - Concierge",
             "Security Level 4 - Front Desk",
-            "Security Level 5 - Front Desk/Restaurant",
-            "Security Level 6 - Management"});
+            "Security Level 5 - Management"});
             this.securityLevelDropDownBox.Location = new System.Drawing.Point(297, 27);
             this.securityLevelDropDownBox.Margin = new System.Windows.Forms.Padding(4);
             this.securityLevelDropDownBox.MaximumSize = new System.Drawing.Size(363, 0);
