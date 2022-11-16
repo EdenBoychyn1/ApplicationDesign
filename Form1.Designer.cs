@@ -38,13 +38,13 @@ namespace ApplicationDesign
             this.loginPanel = new System.Windows.Forms.Panel();
             this.invalidUserIDLabel = new System.Windows.Forms.Label();
             this.userIDLinePanel = new System.Windows.Forms.Panel();
+            this.loginArtPictureBox = new System.Windows.Forms.PictureBox();
             this.passPanel = new System.Windows.Forms.Panel();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.invalidPasswordLabel = new System.Windows.Forms.Label();
             this.passwordPanel = new System.Windows.Forms.Panel();
-            this.signInButton = new System.Windows.Forms.Button();
             this.passwordArtPictureBox = new System.Windows.Forms.PictureBox();
-            this.loginArtPictureBox = new System.Windows.Forms.PictureBox();
+            this.signInButton = new System.Windows.Forms.Button();
             this.buttonPanel = new System.Windows.Forms.Panel();
             this.restaurantButton = new System.Windows.Forms.Button();
             this.housekeepingButton = new System.Windows.Forms.Button();
@@ -61,9 +61,9 @@ namespace ApplicationDesign
             this.passwordToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.signInToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.loginPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loginArtPictureBox)).BeginInit();
             this.passPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordArtPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.loginArtPictureBox)).BeginInit();
             this.buttonPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kingWilliamHotelPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -168,6 +168,16 @@ namespace ApplicationDesign
             this.userIDLinePanel.Size = new System.Drawing.Size(365, 2);
             this.userIDLinePanel.TabIndex = 11;
             // 
+            // loginArtPictureBox
+            // 
+            this.loginArtPictureBox.Image = global::ApplicationDesign.Properties.Resources.user__1_;
+            this.loginArtPictureBox.Location = new System.Drawing.Point(83, 22);
+            this.loginArtPictureBox.Margin = new System.Windows.Forms.Padding(4);
+            this.loginArtPictureBox.Name = "loginArtPictureBox";
+            this.loginArtPictureBox.Size = new System.Drawing.Size(45, 52);
+            this.loginArtPictureBox.TabIndex = 7;
+            this.loginArtPictureBox.TabStop = false;
+            // 
             // passPanel
             // 
             this.passPanel.Controls.Add(this.passwordTextBox);
@@ -221,6 +231,16 @@ namespace ApplicationDesign
             this.passwordPanel.Size = new System.Drawing.Size(365, 2);
             this.passwordPanel.TabIndex = 16;
             // 
+            // passwordArtPictureBox
+            // 
+            this.passwordArtPictureBox.Image = global::ApplicationDesign.Properties.Resources.key;
+            this.passwordArtPictureBox.Location = new System.Drawing.Point(83, 25);
+            this.passwordArtPictureBox.Margin = new System.Windows.Forms.Padding(4);
+            this.passwordArtPictureBox.Name = "passwordArtPictureBox";
+            this.passwordArtPictureBox.Size = new System.Drawing.Size(59, 50);
+            this.passwordArtPictureBox.TabIndex = 6;
+            this.passwordArtPictureBox.TabStop = false;
+            // 
             // signInButton
             // 
             this.signInButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
@@ -237,26 +257,6 @@ namespace ApplicationDesign
             this.signInToolTip.SetToolTip(this.signInButton, "Select Sign In after entering your employee (user) ID and password.");
             this.signInButton.UseVisualStyleBackColor = true;
             this.signInButton.Click += new System.EventHandler(this.signInButton_Click);
-            // 
-            // passwordArtPictureBox
-            // 
-            this.passwordArtPictureBox.Image = global::ApplicationDesign.Properties.Resources.key;
-            this.passwordArtPictureBox.Location = new System.Drawing.Point(83, 25);
-            this.passwordArtPictureBox.Margin = new System.Windows.Forms.Padding(4);
-            this.passwordArtPictureBox.Name = "passwordArtPictureBox";
-            this.passwordArtPictureBox.Size = new System.Drawing.Size(59, 50);
-            this.passwordArtPictureBox.TabIndex = 6;
-            this.passwordArtPictureBox.TabStop = false;
-            // 
-            // loginArtPictureBox
-            // 
-            this.loginArtPictureBox.Image = global::ApplicationDesign.Properties.Resources.user__1_;
-            this.loginArtPictureBox.Location = new System.Drawing.Point(83, 22);
-            this.loginArtPictureBox.Margin = new System.Windows.Forms.Padding(4);
-            this.loginArtPictureBox.Name = "loginArtPictureBox";
-            this.loginArtPictureBox.Size = new System.Drawing.Size(45, 52);
-            this.loginArtPictureBox.TabIndex = 7;
-            this.loginArtPictureBox.TabStop = false;
             // 
             // buttonPanel
             // 
@@ -398,10 +398,10 @@ namespace ApplicationDesign
             this.Text = "King William Hotel";
             this.loginPanel.ResumeLayout(false);
             this.loginPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loginArtPictureBox)).EndInit();
             this.passPanel.ResumeLayout(false);
             this.passPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordArtPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.loginArtPictureBox)).EndInit();
             this.buttonPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kingWilliamHotelPictureBox)).EndInit();
             this.ResumeLayout(false);

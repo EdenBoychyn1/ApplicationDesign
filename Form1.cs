@@ -19,11 +19,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using ApplicationDesign.Models;
 
 namespace ApplicationDesign
 {
     public partial class kingWilliamHotelForm : Form
     {
+
+        /*
+         * Instantiate a new MainDashbaord object to preload data from the database into the model and use it in PhyscianDashboard2cs.cs.
+         */
+        private KingWilliamHotelModel model;
+        public int user_id { get; set; }
         public kingWilliamHotelForm()
         {
             InitializeComponent();
@@ -76,7 +84,7 @@ namespace ApplicationDesign
         /// <param name="e"></param>
         private void signInButton_Click(object sender, EventArgs e)
         {
-            if (userIDTextBox.Text == "Enter User ID" || userIDTextBox.Text.Equals(""))
+            /*if (userIDTextBox.Text == "Enter User ID" || userIDTextBox.Text.Equals(""))
             {
                 invalidUserIDLabel.Visible = true;
                 userIDTextBox.Focus();
@@ -87,6 +95,21 @@ namespace ApplicationDesign
                 invalidPasswordLabel.Visible = true;
                 passwordTextBox.Focus();
                 return;
+            }*/
+
+            string userId = userIDTextBox.Text;
+            user_id = Int32.Parse(userId);
+            if (model.UsernameValidation(userId) == true)
+            {
+                MessageBox.Show("User ID is in the database.");
+            }
+            else if (userIDTextBox.TextLength == 0)
+            {
+                MessageBox.Show("Error, you must enter your username.");
+            }
+            else
+            {
+                MessageBox.Show("Error, User ID entered does not match any User ID in the database.");
             }
 
         }
