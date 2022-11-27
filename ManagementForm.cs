@@ -19,19 +19,156 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ApplicationDesign.Models;
 
 namespace ApplicationDesign
 {
     public partial class ManagementForm : Form
     {
+
+        private KingWilliamHotelModel model;
         public ManagementForm()
         {
+            model = new KingWilliamHotelModel();
             InitializeComponent();
         }
 
+        #region GUI Appearance
         private void ManagementForm_Load(object sender, EventArgs e)
         {
             this.MinimumSize = new System.Drawing.Size(1000, 900);
         }
+
+        #endregion
+
+        #region Properties
+        #endregion
+
+        #region Events
+        private void signUpButton_Click(object sender, EventArgs e)
+        {
+            
+            // TODO: NEED A TRY & CATCH
+            if (employeeFirstNameTextBox.Text == "Enter Employee First Name" || employeeFirstNameTextBox.Text.Equals(""))
+            {
+                invalidEmployeeFirstNameLabel.Visible = true;
+                invalidEmployeeFirstNameLabel.Focus();
+            }
+            else if (employeeLastNameTextBox.Text == "Enter Employee Last Name" || employeeLastNameTextBox.Text.Equals(""))
+            {
+                invalidEmployeeLastNameLabel.Visible = true;
+                invalidEmployeeLastNameLabel.Focus();
+            }
+            else if (string.IsNullOrEmpty(securityLevelDropDownBox.Text))
+            {
+                invalidSecurityRoleLabel.Visible = true;
+                invalidSecurityRoleLabel.Focus();
+            }
+            else if (employeePasswordTextBox.Text == "Enter Employee Password" || employeePasswordTextBox.Text.Equals(""))
+            {
+                invalidEmployeePasswordLabel.Visible = true;
+                invalidEmployeePasswordLabel.Focus();
+            }
+            else if (confirmPasswordTextBox.Text == "Confirm Password" || confirmPasswordTextBox.Text.Equals(""))
+            {
+                invalidEmployeePasswordLabel.Visible = true;
+                invalidEmployeePasswordLabel.Focus();
+            }
+            else if (employeePasswordTextBox.Text != confirmPasswordTextBox.Text)
+            {
+                invalidConfirmPasswordLabel.Visible = true;
+                invalidConfirmPasswordLabel.Focus();
+            }
+
+            string first_name = employeeFirstNameTextBox.Text;
+            string last_name = employeeLastNameTextBox.Text;
+            int security_number = SecurityStringToNumber(securityLevelDropDownBox.SelectedItem.ToString());
+            string password = employeePasswordTextBox.Text;
+
+
+            model.AddEmployee(first_name, last_name, security_number, password);
+
+            // TODO: NEED TO RESET FORM
+            // TODO: NEED TO HASH PASSWORD
+        }
+
+        private void employeeFirstNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            invalidEmployeeFirstNameLabel.Visible = false;
+        }
+
+        private void employeeLastNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            invalidEmployeeLastNameLabel.Visible = false;
+        }
+
+        private void employeePasswordTextBox_TextChanged(object sender, EventArgs e)
+        {
+            invalidEmployeePasswordLabel.Visible = false;
+            invalidConfirmPasswordLabel.Visible = false;
+        }
+
+        private void confirmPasswordTextBox_TextChanged(object sender, EventArgs e)
+        {
+            invalidEmployeePasswordLabel.Visible = false;
+            invalidConfirmPasswordLabel.Visible = false;
+        }
+
+        private void employeeFirstNameTextBox_Click(object sender, EventArgs e)
+        {
+            employeeFirstNameTextBox.SelectAll();
+        }
+
+        private void employeeLastNameTextBox_Click(object sender, EventArgs e)
+        {
+            employeeLastNameTextBox.SelectAll();
+        }
+
+        private void employeePasswordTextBox_Click(object sender, EventArgs e)
+        {
+            employeePasswordTextBox.SelectAll();
+        }
+
+        private void confirmPasswordTextBox_Click(object sender, EventArgs e)
+        {
+            confirmPasswordTextBox.SelectAll();
+        }
+
+        #endregion
+
+        #region Functions
+
+        public int SecurityStringToNumber(string securityString)
+        {
+            int security_number = 0;
+
+            if (securityString == "Security Level 5 - Management")
+            {
+                security_number = 5;
+            }
+            else if (securityString == "Security Level 4 - Front Desk")
+            {
+                security_number = 4;
+            }
+            else if (securityString == "Security Level 3 - Concierge")
+            {
+                security_number = 3;
+            }
+            else if (securityString == "Security Level 2 - Housekeeping")
+            {
+                security_number = 2;
+            }
+            else 
+            {
+                security_number = 1;
+            }
+            return security_number; 
+        }
+        #endregion
     }
+
+
+
+
+
 }

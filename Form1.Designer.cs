@@ -36,7 +36,6 @@ namespace ApplicationDesign
             this.userIDTextBox = new System.Windows.Forms.TextBox();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.loginPanel = new System.Windows.Forms.Panel();
-            this.invalidUserIDLabel = new System.Windows.Forms.Label();
             this.userIDLinePanel = new System.Windows.Forms.Panel();
             this.loginArtPictureBox = new System.Windows.Forms.PictureBox();
             this.passPanel = new System.Windows.Forms.Panel();
@@ -116,6 +115,7 @@ namespace ApplicationDesign
             this.userIDTextBox.TabIndex = 10;
             this.userIDTextBox.Text = "Enter User ID";
             this.userIDTextBox.Click += new System.EventHandler(this.userIDTextBox_Click);
+            this.userIDTextBox.TextChanged += new System.EventHandler(this.userIDTextBox_TextChanged);
             // 
             // passwordLabel
             // 
@@ -133,7 +133,6 @@ namespace ApplicationDesign
             // 
             // loginPanel
             // 
-            this.loginPanel.Controls.Add(this.invalidUserIDLabel);
             this.loginPanel.Controls.Add(this.userIDLinePanel);
             this.loginPanel.Controls.Add(this.loginArtPictureBox);
             this.loginPanel.Controls.Add(this.userIdLabel);
@@ -143,20 +142,6 @@ namespace ApplicationDesign
             this.loginPanel.Name = "loginPanel";
             this.loginPanel.Size = new System.Drawing.Size(785, 118);
             this.loginPanel.TabIndex = 8;
-            // 
-            // invalidUserIDLabel
-            // 
-            this.invalidUserIDLabel.AutoSize = true;
-            this.invalidUserIDLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.invalidUserIDLabel.ForeColor = System.Drawing.Color.Red;
-            this.invalidUserIDLabel.Location = new System.Drawing.Point(297, 75);
-            this.invalidUserIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.invalidUserIDLabel.MinimumSize = new System.Drawing.Size(365, 16);
-            this.invalidUserIDLabel.Name = "invalidUserIDLabel";
-            this.invalidUserIDLabel.Size = new System.Drawing.Size(365, 23);
-            this.invalidUserIDLabel.TabIndex = 12;
-            this.invalidUserIDLabel.Text = "Invalid User ID.";
-            this.invalidUserIDLabel.Visible = false;
             // 
             // userIDLinePanel
             // 
@@ -202,23 +187,24 @@ namespace ApplicationDesign
             this.passwordTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.passwordTextBox.MinimumSize = new System.Drawing.Size(71, 20);
             this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(364, 23);
             this.passwordTextBox.TabIndex = 15;
-            this.passwordTextBox.Text = "Enter Password";
             this.passwordTextBox.Click += new System.EventHandler(this.passwordTextBox_Click);
+            this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
             // 
             // invalidPasswordLabel
             // 
             this.invalidPasswordLabel.AutoSize = true;
             this.invalidPasswordLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.invalidPasswordLabel.ForeColor = System.Drawing.Color.Red;
-            this.invalidPasswordLabel.Location = new System.Drawing.Point(297, 80);
+            this.invalidPasswordLabel.Location = new System.Drawing.Point(180, 76);
             this.invalidPasswordLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.invalidPasswordLabel.MinimumSize = new System.Drawing.Size(365, 16);
             this.invalidPasswordLabel.Name = "invalidPasswordLabel";
-            this.invalidPasswordLabel.Size = new System.Drawing.Size(365, 23);
+            this.invalidPasswordLabel.Size = new System.Drawing.Size(484, 23);
             this.invalidPasswordLabel.TabIndex = 17;
-            this.invalidPasswordLabel.Text = "Invalid Password.";
+            this.invalidPasswordLabel.Text = "Invalid Employee User ID or Password. Please try again.";
             this.invalidPasswordLabel.Visible = false;
             // 
             // passwordPanel
@@ -421,7 +407,6 @@ namespace ApplicationDesign
         private System.Windows.Forms.PictureBox passwordArtPictureBox;
         private System.Windows.Forms.Panel userIDLinePanel;
         private System.Windows.Forms.Panel passwordPanel;
-        private System.Windows.Forms.Label invalidUserIDLabel;
         private System.Windows.Forms.Label invalidPasswordLabel;
         private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.Button signInButton;
