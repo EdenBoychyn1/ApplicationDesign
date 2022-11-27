@@ -167,6 +167,8 @@ namespace ApplicationDesign
             this.employeeFirstNameTextBox.Size = new System.Drawing.Size(364, 23);
             this.employeeFirstNameTextBox.TabIndex = 7;
             this.employeeFirstNameTextBox.Text = "Enter Employee First Name";
+            this.employeeFirstNameTextBox.Click += new System.EventHandler(this.employeeFirstNameTextBox_Click);
+            this.employeeFirstNameTextBox.TextChanged += new System.EventHandler(this.employeeFirstNameTextBox_TextChanged);
             // 
             // emplpyeeLastNamePanel
             // 
@@ -242,6 +244,8 @@ namespace ApplicationDesign
             this.employeeLastNameTextBox.TabIndex = 12;
             this.employeeLastNameTextBox.Text = "Enter Employee Last Name";
             this.employeeLastNameToolTip.SetToolTip(this.employeeLastNameTextBox, "Add employee\'s last name.");
+            this.employeeLastNameTextBox.Click += new System.EventHandler(this.employeeLastNameTextBox_Click);
+            this.employeeLastNameTextBox.TextChanged += new System.EventHandler(this.employeeLastNameTextBox_TextChanged);
             // 
             // employeeSecurityLevelPanel
             // 
@@ -387,6 +391,8 @@ namespace ApplicationDesign
             this.employeePasswordTextBox.Size = new System.Drawing.Size(364, 23);
             this.employeePasswordTextBox.TabIndex = 21;
             this.employeePasswordTextBox.Text = "Enter Employee Password";
+            this.employeePasswordTextBox.Click += new System.EventHandler(this.employeePasswordTextBox_Click);
+            this.employeePasswordTextBox.TextChanged += new System.EventHandler(this.employeePasswordTextBox_TextChanged);
             // 
             // confirmPasswordPanel
             // 
@@ -462,6 +468,8 @@ namespace ApplicationDesign
             this.confirmPasswordTextBox.Size = new System.Drawing.Size(364, 23);
             this.confirmPasswordTextBox.TabIndex = 26;
             this.confirmPasswordTextBox.Text = "Confirm Employee Password";
+            this.confirmPasswordTextBox.Click += new System.EventHandler(this.confirmPasswordTextBox_Click);
+            this.confirmPasswordTextBox.TextChanged += new System.EventHandler(this.confirmPasswordTextBox_TextChanged);
             // 
             // signUpButton
             // 
@@ -479,6 +487,7 @@ namespace ApplicationDesign
             this.employeeSignUpToolTip.SetToolTip(this.signUpButton, "After entering all field, select Sign Up Employee to add the employee ton the dat" +
         "abase.");
             this.signUpButton.UseVisualStyleBackColor = true;
+            this.signUpButton.Click += new System.EventHandler(this.signUpButton_Click);
             // 
             // kingWilliamHotelPictureBox
             // 
