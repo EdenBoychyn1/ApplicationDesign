@@ -32,6 +32,10 @@ namespace ApplicationDesign
 
         #region Properties
         private GuestModel model = new GuestModel();
+
+        private ReservationModel reservationModel = new ReservationModel();
+
+        private string guest_phone_number { get; set; }
         #endregion
 
         private void findGuest1Label_Click(object sender, EventArgs e)
@@ -40,35 +44,146 @@ namespace ApplicationDesign
         }
 
         #region Events
+        private void guestsPhoneTextBox_TextChanged(object sender, EventArgs e)
+        {
+            invalidPhoneLabel.Visible = false;
+        }
+        private void findGuestListBox_Enter(object sender, EventArgs e)
+        {
+            noGuestSelectedLabel.Visible = false;
+        }
+
+        private void guestsPhoneTextBox_Click(object sender, EventArgs e)
+        {
+            guestsPhoneTextBox.SelectAll();
+        }
+
+        private void roomTypeDropDownBox_Click(object sender, EventArgs e)
+        {
+            invalidRoomTypeLabel.Visible = false;
+        }
+
+        private void reservationEndDateDTP_ValueChanged(object sender, EventArgs e)
+        {
+            invalidDatesLabel.Visible = false;
+        }
+
+        private void reservationStartDateDTP_ValueChanged(object sender, EventArgs e)
+        {
+            invalidDatesLabel.Visible = false;
+        }
+
         private void findGuestButton_Click(object sender, EventArgs e)
         {
-            string guest_phone_number = guestsPhoneTextBox.Text;
+            guest_phone_number = guestsPhoneTextBox.Text;
             List<GuestModel> list = new List<GuestModel>();
             list = model.FindGuestByPhone(guest_phone_number);
-            foreach (GuestModel model in list)
+            if (guestsPhoneTextBox.Text == "Enter Guest's Phone Number" || guestsPhoneTextBox.Text.Equals("") || list.Count == 0)
             {
-                findGuestListBox.Items.Add(model.guest_lname).ToString();
-                findGuestListBox.Items.Add(model.guest_fname).ToString();
+                invalidPhoneLabel.Visible = true;
+            }
+            else
+            {
+                foreach (GuestModel model in list)
+                {
+                    findGuestListBox.Items.Add(model.guest_lname).ToString();
+                    findGuestListBox.Items.Add(model.guest_fname).ToString();
+                }
             }
         }
 
         private void findRoomButton_Click(object sender, EventArgs e)
         {
-            string room_type = roomTypeDropDownBox.SelectedItem.ToString();
-            if (room_type == "Single")
+
+            if (guestsPhoneTextBox.Text == "Enter Guest's Phone Number" || guestsPhoneTextBox.Text.Equals(""))
             {
-                roomsAvailableComboBox.DataSource = model.RoomList(room_type);
+                invalidPhoneLabel.Visible = true;
             }
-            else if (room_type == "Double")
+            else if (findGuestListBox.SelectedIndex < 0 )
             {
-                roomsAvailableComboBox.DataSource = model.RoomList(room_type);
+                noGuestSelectedLabel.Visible = true;
+            }
+            else if (findGuestListBox.SelectedIndex == 2)
+            {
+                noGuestSelectedLabel.Text = "You must select the guest's last name.";
+            }
+            else if (roomTypeDropDownBox.SelectedIndex < 0)
+            {
+                invalidRoomTypeLabel.Visible = true;
             }
             else
             {
-                roomsAvailableComboBox.DataSource = model.RoomList(room_type);
+                string room_type = roomTypeDropDownBox.SelectedItem.ToString();
+                if (room_type == "Single" )
+                {
+                    roomsAvailableComboBox.DataSource = model.RoomList(room_type);
+                }
+                else if (room_type == "Double")
+                {
+                    roomsAvailableComboBox.DataSource = model.RoomList(room_type);
+                }
+                else
+                {
+                    roomsAvailableComboBox.DataSource = model.RoomList(room_type);
+                }
+
+                invalidRoomNumberLabel.Visible = false;
             }
+
         }
 
         #endregion
+
+        private void addReservationButton_Click(object sender, EventArgs e)
+        {
+
+
+
+            DateTime startDate = reservationStartDateDTP.Value;
+            DateTime endDate = reservationEndDateDTP.Value;
+            if (guestsPhoneTextBox.Text == "Enter Guest's Phone Number" || guestsPhoneTextBox.Text.Equals(""))
+            {
+                invalidPhoneLabel.Visible = true;
+            }
+            else if (findGuestListBox.SelectedIndex < 0)
+            {
+                noGuestSelectedLabel.Visible = true;
+            }
+            else if (findGuestListBox.SelectedIndex == 1)
+            {
+                noGuestSelectedLabel.Text = "You must select the guest's last name.";
+            }
+            else if (roomTypeDropDownBox.SelectedIndex < 0)
+            {
+                invalidRoomTypeLabel.Visible = true;
+            }
+            else if (roomsAvailableComboBox.SelectedIndex < 0)
+            {
+                invalidRoomNumberLabel.Visible = true;
+            }
+            else if (startDate > endDate)
+            {
+                invalidDatesLabel.Visible = true;
+            }
+            else
+            {
+                int room_number = Int32.Parse(roomsAvailableComboBox.SelectedValue.ToString());
+                string client_l_name = findGuestListBox.GetItemText(findGuestListBox.SelectedItem);
+                int room_id = reservationModel.FindRoomID(room_number);
+                int client_id = reservationModel.FindClientID(client_l_name);
+
+                reservationModel.AddReservation(startDate, endDate, client_id, room_id);
+
+                reservationModel.UpdateOccupiedRoom(room_id);
+
+            }
+
+        }
+
+        private void ResetForm()
+        {
+            guestsPhoneTextBox.Text = string.Empty; 
+
+        }
     }
 }
