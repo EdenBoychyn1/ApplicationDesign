@@ -41,9 +41,6 @@ namespace ApplicationDesign
 
         #endregion
 
-        #region Properties
-        #endregion
-
         #region Events
         private void signUpButton_Click(object sender, EventArgs e)
         {

@@ -92,6 +92,7 @@
     <Compile Include="ManagementForm.Designer.cs">
       <DependentUpon>ManagementForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\GuestModel.cs" />
     <Compile Include="Models\KingWilliamHotelModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

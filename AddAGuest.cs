@@ -19,6 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ApplicationDesign.Models;
 
 namespace ApplicationDesign
 {
@@ -26,7 +27,24 @@ namespace ApplicationDesign
     {
         public AddAGuestForm()
         {
+
             InitializeComponent();
+        }
+
+        private GuestModel model = new GuestModel();
+
+        // TODO: Add comments
+        // TODO: add validation 
+        // TODO: clear form
+        // TODO: messages indicating add guest was successful
+        private void addGuest_Click(object sender, EventArgs e)
+        {
+            string first_name = clientFirstNameTextBox.Text;
+            string last_name = guestLastNameTextBox.Text;
+            string phone_number = guestPhoneNumber.Text;
+            string email = clientEmailTextBox.Text;
+
+            model.AddGuest(first_name, last_name, phone_number, email);
         }
     }
 }
