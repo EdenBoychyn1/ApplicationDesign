@@ -31,6 +31,15 @@ namespace ApplicationDesign
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.findGuest1Label = new System.Windows.Forms.Label();
+            this.findGuestListBox = new System.Windows.Forms.ListBox();
+            this.findGuestButton = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.invalidPhoneLabel = new System.Windows.Forms.Label();
+            this.guestsPhoneTextBox = new System.Windows.Forms.TextBox();
+            this.phoneLabel = new System.Windows.Forms.Label();
+            this.findGuestLabel = new System.Windows.Forms.Label();
             this.addReservationButton = new System.Windows.Forms.Button();
             this.reservationEndDateDTP = new System.Windows.Forms.DateTimePicker();
             this.reservationEndDateLabel = new System.Windows.Forms.Label();
@@ -50,24 +59,16 @@ namespace ApplicationDesign
             this.addReservationToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.startToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.endToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.findGuestButton = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lastNameToolTip = new System.Windows.Forms.Label();
-            this.findGuestLabel = new System.Windows.Forms.Label();
-            this.findGuestListBox = new System.Windows.Forms.ListBox();
-            this.findGuest1Label = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.findRoomButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.conciergeFormPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kingWilliamHotelPictureBox)).BeginInit();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.findRoomButton);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.addReservationButton);
             this.panel1.Controls.Add(this.reservationEndDateDTP);
@@ -82,8 +83,127 @@ namespace ApplicationDesign
             this.panel1.Location = new System.Drawing.Point(301, 173);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(720, 600);
+            this.panel1.Size = new System.Drawing.Size(737, 600);
             this.panel1.TabIndex = 3;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.findGuest1Label);
+            this.panel3.Controls.Add(this.findGuestListBox);
+            this.panel3.Controls.Add(this.findGuestButton);
+            this.panel3.Controls.Add(this.panel5);
+            this.panel3.Controls.Add(this.invalidPhoneLabel);
+            this.panel3.Controls.Add(this.guestsPhoneTextBox);
+            this.panel3.Controls.Add(this.phoneLabel);
+            this.panel3.Controls.Add(this.findGuestLabel);
+            this.panel3.Location = new System.Drawing.Point(14, 19);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(719, 264);
+            this.panel3.TabIndex = 14;
+            // 
+            // findGuest1Label
+            // 
+            this.findGuest1Label.AutoSize = true;
+            this.findGuest1Label.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.findGuest1Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
+            this.findGuest1Label.Location = new System.Drawing.Point(26, 116);
+            this.findGuest1Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.findGuest1Label.MinimumSize = new System.Drawing.Size(71, 25);
+            this.findGuest1Label.Name = "findGuest1Label";
+            this.findGuest1Label.Size = new System.Drawing.Size(135, 25);
+            this.findGuest1Label.TabIndex = 19;
+            this.findGuest1Label.Text = "Select Guest:";
+            this.findGuest1Label.Click += new System.EventHandler(this.findGuest1Label_Click);
+            // 
+            // findGuestListBox
+            // 
+            this.findGuestListBox.FormattingEnabled = true;
+            this.findGuestListBox.ItemHeight = 16;
+            this.findGuestListBox.Location = new System.Drawing.Point(195, 116);
+            this.findGuestListBox.Name = "findGuestListBox";
+            this.findGuestListBox.Size = new System.Drawing.Size(267, 132);
+            this.findGuestListBox.TabIndex = 18;
+            // 
+            // findGuestButton
+            // 
+            this.findGuestButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
+            this.findGuestButton.FlatAppearance.BorderSize = 6;
+            this.findGuestButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.findGuestButton.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.findGuestButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
+            this.findGuestButton.Location = new System.Drawing.Point(526, 48);
+            this.findGuestButton.Margin = new System.Windows.Forms.Padding(4);
+            this.findGuestButton.Name = "findGuestButton";
+            this.findGuestButton.Size = new System.Drawing.Size(180, 52);
+            this.findGuestButton.TabIndex = 17;
+            this.findGuestButton.Text = "Find Guest";
+            this.findGuestButton.UseVisualStyleBackColor = true;
+            this.findGuestButton.Click += new System.EventHandler(this.findGuestButton_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.ForeColor = System.Drawing.Color.White;
+            this.panel5.Location = new System.Drawing.Point(195, 73);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
+            this.panel5.MinimumSize = new System.Drawing.Size(267, 2);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(267, 2);
+            this.panel5.TabIndex = 15;
+            // 
+            // invalidPhoneLabel
+            // 
+            this.invalidPhoneLabel.AutoSize = true;
+            this.invalidPhoneLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invalidPhoneLabel.ForeColor = System.Drawing.Color.Red;
+            this.invalidPhoneLabel.Location = new System.Drawing.Point(200, 79);
+            this.invalidPhoneLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.invalidPhoneLabel.MinimumSize = new System.Drawing.Size(232, 23);
+            this.invalidPhoneLabel.Name = "invalidPhoneLabel";
+            this.invalidPhoneLabel.Size = new System.Drawing.Size(232, 23);
+            this.invalidPhoneLabel.TabIndex = 16;
+            this.invalidPhoneLabel.Text = "No guest could be found.";
+            this.invalidPhoneLabel.Visible = false;
+            // 
+            // guestsPhoneTextBox
+            // 
+            this.guestsPhoneTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(141)))), ((int)(((byte)(183)))));
+            this.guestsPhoneTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.guestsPhoneTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guestsPhoneTextBox.ForeColor = System.Drawing.Color.Gainsboro;
+            this.guestsPhoneTextBox.Location = new System.Drawing.Point(195, 45);
+            this.guestsPhoneTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.guestsPhoneTextBox.MinimumSize = new System.Drawing.Size(71, 20);
+            this.guestsPhoneTextBox.Name = "guestsPhoneTextBox";
+            this.guestsPhoneTextBox.Size = new System.Drawing.Size(274, 21);
+            this.guestsPhoneTextBox.TabIndex = 14;
+            this.guestsPhoneTextBox.Text = "Enter Guest\'s Phone Number";
+            // 
+            // phoneLabel
+            // 
+            this.phoneLabel.AutoSize = true;
+            this.phoneLabel.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.phoneLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
+            this.phoneLabel.Location = new System.Drawing.Point(17, 48);
+            this.phoneLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.phoneLabel.MinimumSize = new System.Drawing.Size(71, 25);
+            this.phoneLabel.Name = "phoneLabel";
+            this.phoneLabel.Size = new System.Drawing.Size(161, 25);
+            this.phoneLabel.TabIndex = 13;
+            this.phoneLabel.Text = "Phone Number:";
+            // 
+            // findGuestLabel
+            // 
+            this.findGuestLabel.AutoSize = true;
+            this.findGuestLabel.Font = new System.Drawing.Font("Times New Roman", 17.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.findGuestLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
+            this.findGuestLabel.Location = new System.Drawing.Point(16, 0);
+            this.findGuestLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.findGuestLabel.Name = "findGuestLabel";
+            this.findGuestLabel.Size = new System.Drawing.Size(152, 32);
+            this.findGuestLabel.TabIndex = 12;
+            this.findGuestLabel.Text = "Find Guest";
             // 
             // addReservationButton
             // 
@@ -181,9 +301,9 @@ namespace ApplicationDesign
             this.roomTypeDropDownBox.ForeColor = System.Drawing.Color.White;
             this.roomTypeDropDownBox.FormattingEnabled = true;
             this.roomTypeDropDownBox.Items.AddRange(new object[] {
-            "Single Room",
-            "Double Room",
-            "Suite"});
+            "Single",
+            "Double",
+            "Suites"});
             this.roomTypeDropDownBox.Location = new System.Drawing.Point(281, 331);
             this.roomTypeDropDownBox.Margin = new System.Windows.Forms.Padding(4);
             this.roomTypeDropDownBox.MaximumSize = new System.Drawing.Size(265, 0);
@@ -258,138 +378,22 @@ namespace ApplicationDesign
             this.designPanel.Size = new System.Drawing.Size(267, 617);
             this.designPanel.TabIndex = 2;
             // 
-            // panel3
+            // findRoomButton
             // 
-            this.panel3.Controls.Add(this.findGuest1Label);
-            this.panel3.Controls.Add(this.findGuestListBox);
-            this.panel3.Controls.Add(this.findGuestButton);
-            this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.textBox2);
-            this.panel3.Controls.Add(this.textBox1);
-            this.panel3.Controls.Add(this.lastNameToolTip);
-            this.panel3.Controls.Add(this.findGuestLabel);
-            this.panel3.Location = new System.Drawing.Point(14, 19);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(656, 264);
-            this.panel3.TabIndex = 14;
-            // 
-            // findGuestButton
-            // 
-            this.findGuestButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.findGuestButton.FlatAppearance.BorderSize = 6;
-            this.findGuestButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.findGuestButton.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.findGuestButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.findGuestButton.Location = new System.Drawing.Point(472, 34);
-            this.findGuestButton.Margin = new System.Windows.Forms.Padding(4);
-            this.findGuestButton.Name = "findGuestButton";
-            this.findGuestButton.Size = new System.Drawing.Size(180, 52);
-            this.findGuestButton.TabIndex = 17;
-            this.findGuestButton.Text = "Find Guest";
-            this.findGuestButton.UseVisualStyleBackColor = true;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.ForeColor = System.Drawing.Color.White;
-            this.panel5.Location = new System.Drawing.Point(179, 57);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4);
-            this.panel5.MinimumSize = new System.Drawing.Size(267, 2);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(267, 2);
-            this.panel5.TabIndex = 15;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(185, 63);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.MinimumSize = new System.Drawing.Size(232, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(232, 23);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Invalid Guest Last Name.";
-            this.label2.Visible = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(141)))), ((int)(((byte)(183)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.textBox1.Location = new System.Drawing.Point(179, 32);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.MinimumSize = new System.Drawing.Size(71, 20);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(267, 23);
-            this.textBox1.TabIndex = 14;
-            this.textBox1.Text = "Enter Guest Last Name";
-            // 
-            // lastNameToolTip
-            // 
-            this.lastNameToolTip.AutoSize = true;
-            this.lastNameToolTip.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameToolTip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.lastNameToolTip.Location = new System.Drawing.Point(26, 34);
-            this.lastNameToolTip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lastNameToolTip.MinimumSize = new System.Drawing.Size(71, 25);
-            this.lastNameToolTip.Name = "lastNameToolTip";
-            this.lastNameToolTip.Size = new System.Drawing.Size(122, 25);
-            this.lastNameToolTip.TabIndex = 13;
-            this.lastNameToolTip.Text = "Last Name:";
-            // 
-            // findGuestLabel
-            // 
-            this.findGuestLabel.AutoSize = true;
-            this.findGuestLabel.Font = new System.Drawing.Font("Times New Roman", 17.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.findGuestLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.findGuestLabel.Location = new System.Drawing.Point(16, 0);
-            this.findGuestLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.findGuestLabel.Name = "findGuestLabel";
-            this.findGuestLabel.Size = new System.Drawing.Size(152, 32);
-            this.findGuestLabel.TabIndex = 12;
-            this.findGuestLabel.Text = "Find Guest";
-            // 
-            // findGuestListBox
-            // 
-            this.findGuestListBox.FormattingEnabled = true;
-            this.findGuestListBox.ItemHeight = 16;
-            this.findGuestListBox.Location = new System.Drawing.Point(179, 101);
-            this.findGuestListBox.Name = "findGuestListBox";
-            this.findGuestListBox.Size = new System.Drawing.Size(267, 132);
-            this.findGuestListBox.TabIndex = 18;
-            // 
-            // findGuest1Label
-            // 
-            this.findGuest1Label.AutoSize = true;
-            this.findGuest1Label.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.findGuest1Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.findGuest1Label.Location = new System.Drawing.Point(26, 101);
-            this.findGuest1Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.findGuest1Label.MinimumSize = new System.Drawing.Size(71, 25);
-            this.findGuest1Label.Name = "findGuest1Label";
-            this.findGuest1Label.Size = new System.Drawing.Size(135, 25);
-            this.findGuest1Label.TabIndex = 19;
-            this.findGuest1Label.Text = "Select Guest:";
-            this.findGuest1Label.Click += new System.EventHandler(this.findGuest1Label_Click);
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(141)))), ((int)(((byte)(183)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.textBox2.Location = new System.Drawing.Point(179, 32);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.MinimumSize = new System.Drawing.Size(71, 20);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(267, 23);
-            this.textBox2.TabIndex = 14;
-            this.textBox2.Text = "Enter Guest Last Name";
+            this.findRoomButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
+            this.findRoomButton.FlatAppearance.BorderSize = 6;
+            this.findRoomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.findRoomButton.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.findRoomButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
+            this.findRoomButton.Location = new System.Drawing.Point(557, 331);
+            this.findRoomButton.Margin = new System.Windows.Forms.Padding(4);
+            this.findRoomButton.Name = "findRoomButton";
+            this.findRoomButton.Size = new System.Drawing.Size(180, 52);
+            this.findRoomButton.TabIndex = 15;
+            this.findRoomButton.Text = "Find Rooms";
+            this.addReservationToolTip.SetToolTip(this.findRoomButton, "Add reservation to database.");
+            this.findRoomButton.UseVisualStyleBackColor = true;
+            this.findRoomButton.Click += new System.EventHandler(this.findRoomButton_Click);
             // 
             // MakeAReservation
             // 
@@ -405,11 +409,11 @@ namespace ApplicationDesign
             this.Text = "MakeAReservation";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.conciergeFormPanel.ResumeLayout(false);
             this.conciergeFormPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kingWilliamHotelPictureBox)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -441,10 +445,10 @@ namespace ApplicationDesign
         private System.Windows.Forms.ListBox findGuestListBox;
         private System.Windows.Forms.Button findGuestButton;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label lastNameToolTip;
+        private System.Windows.Forms.Label invalidPhoneLabel;
+        private System.Windows.Forms.Label phoneLabel;
         private System.Windows.Forms.Label findGuestLabel;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox guestsPhoneTextBox;
+        private System.Windows.Forms.Button findRoomButton;
     }
 }

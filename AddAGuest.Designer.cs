@@ -143,6 +143,7 @@ namespace ApplicationDesign
             this.addGuestToolTip.SetToolTip(this.addGuest, "After entering the guest\'s email, select the Add Guest button to add them to the " +
         "database.");
             this.addGuest.UseVisualStyleBackColor = true;
+            this.addGuest.Click += new System.EventHandler(this.addGuest_Click);
             // 
             // invalidPhoneLabel
             // 

@@ -19,6 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ApplicationDesign.Models;
 
 namespace ApplicationDesign
 {
@@ -29,9 +30,45 @@ namespace ApplicationDesign
             InitializeComponent();
         }
 
+        #region Properties
+        private GuestModel model = new GuestModel();
+        #endregion
+
         private void findGuest1Label_Click(object sender, EventArgs e)
         {
 
         }
+
+        #region Events
+        private void findGuestButton_Click(object sender, EventArgs e)
+        {
+            string guest_phone_number = guestsPhoneTextBox.Text;
+            List<GuestModel> list = new List<GuestModel>();
+            list = model.FindGuestByPhone(guest_phone_number);
+            foreach (GuestModel model in list)
+            {
+                findGuestListBox.Items.Add(model.guest_lname).ToString();
+                findGuestListBox.Items.Add(model.guest_fname).ToString();
+            }
+        }
+
+        private void findRoomButton_Click(object sender, EventArgs e)
+        {
+            string room_type = roomTypeDropDownBox.SelectedItem.ToString();
+            if (room_type == "Single")
+            {
+                roomsAvailableComboBox.DataSource = model.RoomList(room_type);
+            }
+            else if (room_type == "Double")
+            {
+                roomsAvailableComboBox.DataSource = model.RoomList(room_type);
+            }
+            else
+            {
+                roomsAvailableComboBox.DataSource = model.RoomList(room_type);
+            }
+        }
+
+        #endregion
     }
 }
