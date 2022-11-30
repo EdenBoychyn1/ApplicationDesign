@@ -31,6 +31,7 @@ namespace ApplicationDesign
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.findRoomButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.findGuest1Label = new System.Windows.Forms.Label();
             this.findGuestListBox = new System.Windows.Forms.ListBox();
@@ -59,7 +60,10 @@ namespace ApplicationDesign
             this.addReservationToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.startToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.endToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.findRoomButton = new System.Windows.Forms.Button();
+            this.noGuestSelectedLabel = new System.Windows.Forms.Label();
+            this.invalidRoomTypeLabel = new System.Windows.Forms.Label();
+            this.invalidDatesLabel = new System.Windows.Forms.Label();
+            this.invalidRoomNumberLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.conciergeFormPanel.SuspendLayout();
@@ -68,6 +72,10 @@ namespace ApplicationDesign
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.invalidRoomNumberLabel);
+            this.panel1.Controls.Add(this.invalidDatesLabel);
+            this.panel1.Controls.Add(this.invalidRoomTypeLabel);
+            this.panel1.Controls.Add(this.noGuestSelectedLabel);
             this.panel1.Controls.Add(this.findRoomButton);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.addReservationButton);
@@ -83,8 +91,25 @@ namespace ApplicationDesign
             this.panel1.Location = new System.Drawing.Point(301, 173);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(737, 600);
+            this.panel1.Size = new System.Drawing.Size(737, 648);
             this.panel1.TabIndex = 3;
+            // 
+            // findRoomButton
+            // 
+            this.findRoomButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
+            this.findRoomButton.FlatAppearance.BorderSize = 6;
+            this.findRoomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.findRoomButton.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.findRoomButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
+            this.findRoomButton.Location = new System.Drawing.Point(557, 331);
+            this.findRoomButton.Margin = new System.Windows.Forms.Padding(4);
+            this.findRoomButton.Name = "findRoomButton";
+            this.findRoomButton.Size = new System.Drawing.Size(180, 52);
+            this.findRoomButton.TabIndex = 15;
+            this.findRoomButton.Text = "Find Rooms";
+            this.addReservationToolTip.SetToolTip(this.findRoomButton, "Add reservation to database.");
+            this.findRoomButton.UseVisualStyleBackColor = true;
+            this.findRoomButton.Click += new System.EventHandler(this.findRoomButton_Click);
             // 
             // panel3
             // 
@@ -122,8 +147,9 @@ namespace ApplicationDesign
             this.findGuestListBox.ItemHeight = 16;
             this.findGuestListBox.Location = new System.Drawing.Point(195, 116);
             this.findGuestListBox.Name = "findGuestListBox";
-            this.findGuestListBox.Size = new System.Drawing.Size(267, 132);
+            this.findGuestListBox.Size = new System.Drawing.Size(267, 84);
             this.findGuestListBox.TabIndex = 18;
+            this.findGuestListBox.Enter += new System.EventHandler(this.findGuestListBox_Enter);
             // 
             // findGuestButton
             // 
@@ -179,6 +205,8 @@ namespace ApplicationDesign
             this.guestsPhoneTextBox.Size = new System.Drawing.Size(274, 21);
             this.guestsPhoneTextBox.TabIndex = 14;
             this.guestsPhoneTextBox.Text = "Enter Guest\'s Phone Number";
+            this.guestsPhoneTextBox.Click += new System.EventHandler(this.guestsPhoneTextBox_Click);
+            this.guestsPhoneTextBox.TextChanged += new System.EventHandler(this.guestsPhoneTextBox_TextChanged);
             // 
             // phoneLabel
             // 
@@ -212,7 +240,7 @@ namespace ApplicationDesign
             this.addReservationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addReservationButton.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addReservationButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.addReservationButton.Location = new System.Drawing.Point(490, 544);
+            this.addReservationButton.Location = new System.Drawing.Point(557, 578);
             this.addReservationButton.Margin = new System.Windows.Forms.Padding(4);
             this.addReservationButton.Name = "addReservationButton";
             this.addReservationButton.Size = new System.Drawing.Size(180, 52);
@@ -220,21 +248,23 @@ namespace ApplicationDesign
             this.addReservationButton.Text = "Add Reservation";
             this.addReservationToolTip.SetToolTip(this.addReservationButton, "Add reservation to database.");
             this.addReservationButton.UseVisualStyleBackColor = true;
+            this.addReservationButton.Click += new System.EventHandler(this.addReservationButton_Click);
             // 
             // reservationEndDateDTP
             // 
-            this.reservationEndDateDTP.Location = new System.Drawing.Point(423, 492);
+            this.reservationEndDateDTP.Location = new System.Drawing.Point(423, 526);
             this.reservationEndDateDTP.Margin = new System.Windows.Forms.Padding(4);
             this.reservationEndDateDTP.Name = "reservationEndDateDTP";
             this.reservationEndDateDTP.Size = new System.Drawing.Size(247, 22);
             this.reservationEndDateDTP.TabIndex = 12;
+            this.reservationEndDateDTP.ValueChanged += new System.EventHandler(this.reservationEndDateDTP_ValueChanged);
             // 
             // reservationEndDateLabel
             // 
             this.reservationEndDateLabel.AutoSize = true;
             this.reservationEndDateLabel.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reservationEndDateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.reservationEndDateLabel.Location = new System.Drawing.Point(418, 432);
+            this.reservationEndDateLabel.Location = new System.Drawing.Point(418, 482);
             this.reservationEndDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.reservationEndDateLabel.MinimumSize = new System.Drawing.Size(71, 25);
             this.reservationEndDateLabel.Name = "reservationEndDateLabel";
@@ -248,7 +278,7 @@ namespace ApplicationDesign
             this.reservationStartDateLabel.AutoSize = true;
             this.reservationStartDateLabel.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reservationStartDateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.reservationStartDateLabel.Location = new System.Drawing.Point(40, 432);
+            this.reservationStartDateLabel.Location = new System.Drawing.Point(40, 482);
             this.reservationStartDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.reservationStartDateLabel.MinimumSize = new System.Drawing.Size(71, 25);
             this.reservationStartDateLabel.Name = "reservationStartDateLabel";
@@ -259,11 +289,12 @@ namespace ApplicationDesign
             // 
             // reservationStartDateDTP
             // 
-            this.reservationStartDateDTP.Location = new System.Drawing.Point(45, 492);
+            this.reservationStartDateDTP.Location = new System.Drawing.Point(45, 526);
             this.reservationStartDateDTP.Margin = new System.Windows.Forms.Padding(4);
             this.reservationStartDateDTP.Name = "reservationStartDateDTP";
             this.reservationStartDateDTP.Size = new System.Drawing.Size(247, 22);
             this.reservationStartDateDTP.TabIndex = 10;
+            this.reservationStartDateDTP.ValueChanged += new System.EventHandler(this.reservationStartDateDTP_ValueChanged);
             // 
             // roomsAvailableComboBox
             // 
@@ -272,7 +303,7 @@ namespace ApplicationDesign
             this.roomsAvailableComboBox.ForeColor = System.Drawing.Color.White;
             this.roomsAvailableComboBox.FormattingEnabled = true;
             this.roomsAvailableComboBox.ItemHeight = 16;
-            this.roomsAvailableComboBox.Location = new System.Drawing.Point(281, 385);
+            this.roomsAvailableComboBox.Location = new System.Drawing.Point(232, 412);
             this.roomsAvailableComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.roomsAvailableComboBox.MaximumSize = new System.Drawing.Size(265, 0);
             this.roomsAvailableComboBox.MinimumSize = new System.Drawing.Size(265, 0);
@@ -285,7 +316,7 @@ namespace ApplicationDesign
             this.roomsAvailable.AutoSize = true;
             this.roomsAvailable.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.roomsAvailable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.roomsAvailable.Location = new System.Drawing.Point(40, 381);
+            this.roomsAvailable.Location = new System.Drawing.Point(40, 412);
             this.roomsAvailable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.roomsAvailable.MinimumSize = new System.Drawing.Size(71, 25);
             this.roomsAvailable.Name = "roomsAvailable";
@@ -304,13 +335,14 @@ namespace ApplicationDesign
             "Single",
             "Double",
             "Suites"});
-            this.roomTypeDropDownBox.Location = new System.Drawing.Point(281, 331);
+            this.roomTypeDropDownBox.Location = new System.Drawing.Point(232, 335);
             this.roomTypeDropDownBox.Margin = new System.Windows.Forms.Padding(4);
             this.roomTypeDropDownBox.MaximumSize = new System.Drawing.Size(265, 0);
             this.roomTypeDropDownBox.MinimumSize = new System.Drawing.Size(265, 0);
             this.roomTypeDropDownBox.Name = "roomTypeDropDownBox";
             this.roomTypeDropDownBox.Size = new System.Drawing.Size(265, 24);
             this.roomTypeDropDownBox.TabIndex = 6;
+            this.roomTypeDropDownBox.Click += new System.EventHandler(this.roomTypeDropDownBox_Click);
             // 
             // roomTypeLabel
             // 
@@ -375,32 +407,71 @@ namespace ApplicationDesign
             this.designPanel.Location = new System.Drawing.Point(13, 156);
             this.designPanel.Margin = new System.Windows.Forms.Padding(4);
             this.designPanel.Name = "designPanel";
-            this.designPanel.Size = new System.Drawing.Size(267, 617);
+            this.designPanel.Size = new System.Drawing.Size(267, 665);
             this.designPanel.TabIndex = 2;
             // 
-            // findRoomButton
+            // noGuestSelectedLabel
             // 
-            this.findRoomButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.findRoomButton.FlatAppearance.BorderSize = 6;
-            this.findRoomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.findRoomButton.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.findRoomButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.findRoomButton.Location = new System.Drawing.Point(557, 331);
-            this.findRoomButton.Margin = new System.Windows.Forms.Padding(4);
-            this.findRoomButton.Name = "findRoomButton";
-            this.findRoomButton.Size = new System.Drawing.Size(180, 52);
-            this.findRoomButton.TabIndex = 15;
-            this.findRoomButton.Text = "Find Rooms";
-            this.addReservationToolTip.SetToolTip(this.findRoomButton, "Add reservation to database.");
-            this.findRoomButton.UseVisualStyleBackColor = true;
-            this.findRoomButton.Click += new System.EventHandler(this.findRoomButton_Click);
+            this.noGuestSelectedLabel.AutoSize = true;
+            this.noGuestSelectedLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noGuestSelectedLabel.ForeColor = System.Drawing.Color.Red;
+            this.noGuestSelectedLabel.Location = new System.Drawing.Point(214, 237);
+            this.noGuestSelectedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.noGuestSelectedLabel.MinimumSize = new System.Drawing.Size(232, 23);
+            this.noGuestSelectedLabel.Name = "noGuestSelectedLabel";
+            this.noGuestSelectedLabel.Size = new System.Drawing.Size(232, 23);
+            this.noGuestSelectedLabel.TabIndex = 20;
+            this.noGuestSelectedLabel.Text = "You must select the guest.";
+            this.noGuestSelectedLabel.Visible = false;
+            // 
+            // invalidRoomTypeLabel
+            // 
+            this.invalidRoomTypeLabel.AutoSize = true;
+            this.invalidRoomTypeLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invalidRoomTypeLabel.ForeColor = System.Drawing.Color.Red;
+            this.invalidRoomTypeLabel.Location = new System.Drawing.Point(230, 372);
+            this.invalidRoomTypeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.invalidRoomTypeLabel.MinimumSize = new System.Drawing.Size(232, 23);
+            this.invalidRoomTypeLabel.Name = "invalidRoomTypeLabel";
+            this.invalidRoomTypeLabel.Size = new System.Drawing.Size(267, 23);
+            this.invalidRoomTypeLabel.TabIndex = 21;
+            this.invalidRoomTypeLabel.Text = "You must select the room type.";
+            this.invalidRoomTypeLabel.Visible = false;
+            // 
+            // invalidDatesLabel
+            // 
+            this.invalidDatesLabel.AutoSize = true;
+            this.invalidDatesLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invalidDatesLabel.ForeColor = System.Drawing.Color.Red;
+            this.invalidDatesLabel.Location = new System.Drawing.Point(44, 568);
+            this.invalidDatesLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.invalidDatesLabel.MinimumSize = new System.Drawing.Size(232, 23);
+            this.invalidDatesLabel.Name = "invalidDatesLabel";
+            this.invalidDatesLabel.Size = new System.Drawing.Size(473, 58);
+            this.invalidDatesLabel.TabIndex = 22;
+            this.invalidDatesLabel.Text = "The reservation end date must be later than\r\nthe start date.";
+            this.invalidDatesLabel.Visible = false;
+            // 
+            // invalidRoomNumberLabel
+            // 
+            this.invalidRoomNumberLabel.AutoSize = true;
+            this.invalidRoomNumberLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invalidRoomNumberLabel.ForeColor = System.Drawing.Color.Red;
+            this.invalidRoomNumberLabel.Location = new System.Drawing.Point(230, 450);
+            this.invalidRoomNumberLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.invalidRoomNumberLabel.MinimumSize = new System.Drawing.Size(232, 23);
+            this.invalidRoomNumberLabel.Name = "invalidRoomNumberLabel";
+            this.invalidRoomNumberLabel.Size = new System.Drawing.Size(364, 29);
+            this.invalidRoomNumberLabel.TabIndex = 23;
+            this.invalidRoomNumberLabel.Text = "You must select the room number.";
+            this.invalidRoomNumberLabel.Visible = false;
             // 
             // MakeAReservation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(141)))), ((int)(((byte)(183)))));
-            this.ClientSize = new System.Drawing.Size(1068, 786);
+            this.ClientSize = new System.Drawing.Size(1068, 844);
             this.Controls.Add(this.designPanel);
             this.Controls.Add(this.conciergeFormPanel);
             this.Controls.Add(this.panel1);
@@ -450,5 +521,9 @@ namespace ApplicationDesign
         private System.Windows.Forms.Label findGuestLabel;
         private System.Windows.Forms.TextBox guestsPhoneTextBox;
         private System.Windows.Forms.Button findRoomButton;
+        private System.Windows.Forms.Label noGuestSelectedLabel;
+        private System.Windows.Forms.Label invalidRoomTypeLabel;
+        private System.Windows.Forms.Label invalidDatesLabel;
+        private System.Windows.Forms.Label invalidRoomNumberLabel;
     }
 }
