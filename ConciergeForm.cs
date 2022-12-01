@@ -19,6 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ApplicationDesign.Models;
 
 namespace ApplicationDesign
 {
@@ -28,5 +29,113 @@ namespace ApplicationDesign
         {
             InitializeComponent();
         }
+
+
+        #region Events
+        private void findReservationButton_Click(object sender, EventArgs e)
+        {
+            GuestModel guestModel = new GuestModel();
+            invalidClientSelectionLabel.Visible = false;
+            if (reservationIDTextBox.Text == "Enter Reservation ID" || reservationIDTextBox.Text == "")
+            {
+                invalidReservationIDLabel.Visible = true;
+            }
+            else
+            {
+                int reservation_id = Int32.Parse(reservationIDTextBox.Text);
+                string reservation_name = guestModel.ReservationName(reservation_id);
+                if (reservation_name == null)
+                {
+                    invalidReservationIDLabel.Visible = true;
+                }
+                else
+                {
+                    reservationListBox.Items.Add(guestModel.ReservationName(reservation_id));
+                }
+            }
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            invalidSelecteditemsLabel.Visible = false;
+            invalidAddedItemsLabel.Visible = false;
+            MoveListBoxItems(itemsAvailableListBox, selecteditemsListBox);
+        }
+        private void selecteditemsListBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            invalidSelecteditemsLabel.Visible = false;
+        }
+
+        private void removeButton_Click(object sender, EventArgs e)
+        {
+            
+            if (selecteditemsListBox.SelectedItems.Count <= 0)
+            {
+                invalidSelecteditemsLabel.Visible = true;
+            }
+            else
+            {
+                MoveListBoxItemsBack(selecteditemsListBox);
+            }
+        }
+
+        private void reservationIDTextBox_Click(object sender, EventArgs e)
+        {
+            reservationIDTextBox.SelectAll();
+            invalidReservationIDLabel.Visible = false;
+        }
+
+        private void itemInvoiceButton_Click(object sender, EventArgs e)
+        {
+            if (reservationIDTextBox.Text == "Enter Reservation ID" || reservationIDTextBox.Text == "")
+            {
+                invalidReservationIDLabel.Visible = true;
+            }
+            else if (reservationListBox.Items.Count != 1)
+            {
+                invalidClientSelectionLabel.Visible = true;
+            }
+            else if (selecteditemsListBox.Items.Count <= 0)
+            {
+                invalidAddedItemsLabel.Visible = true;
+            }
+            else
+            {
+                invalidClientSelectionLabel.Visible = false;
+                GuestModel guestModel = new GuestModel();
+                int reservation_id = Int32.Parse(reservationIDTextBox.Text);
+                string reservation_name = guestModel.ReservationName(reservation_id);
+                if (reservation_name == null)
+                {
+                    invalidReservationIDLabel.Visible = true;
+                }
+            }
+        }
+
+        #endregion
+
+        #region Methods
+
+        private void MoveListBoxItems(ListBox source, ListBox destination)
+        {
+            ListBox.SelectedObjectCollection sourceItems = source.SelectedItems;
+            foreach (var item in sourceItems)
+            {
+                destination.Items.Add(item);
+            }
+        }
+
+        private void MoveListBoxItemsBack(ListBox source)
+        {
+            ListBox.SelectedObjectCollection sourceItems = source.SelectedItems;
+            while (source.SelectedItems.Count > 0)
+            {
+                source.Items.Remove(source.SelectedItems[0]);
+            }
+        }
+
+        #endregion
+
+
     }
 }

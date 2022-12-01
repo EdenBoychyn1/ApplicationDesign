@@ -47,14 +47,17 @@ namespace ApplicationDesign
             this.reservationIDTextBox = new System.Windows.Forms.TextBox();
             this.reservationIDToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.itemCodeToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.slectedItemsLabel = new System.Windows.Forms.Label();
             this.itemDescriptionToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.findReservationToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.addItemToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.itemsAvailableListBox = new System.Windows.Forms.ListBox();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.removeButton = new System.Windows.Forms.Button();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.slectedItemsLabel = new System.Windows.Forms.Label();
+            this.selecteditemsListBox = new System.Windows.Forms.ListBox();
+            this.invalidClientSelectionLabel = new System.Windows.Forms.Label();
+            this.invalidSelecteditemsLabel = new System.Windows.Forms.Label();
+            this.invalidAddedItemsLabel = new System.Windows.Forms.Label();
             this.conciergeFormPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kingWilliamHotelPictureBox)).BeginInit();
             this.reservationIDPanel.SuspendLayout();
@@ -108,7 +111,7 @@ namespace ApplicationDesign
             this.itemInvoiceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.itemInvoiceButton.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemInvoiceButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.itemInvoiceButton.Location = new System.Drawing.Point(999, 538);
+            this.itemInvoiceButton.Location = new System.Drawing.Point(1017, 529);
             this.itemInvoiceButton.Margin = new System.Windows.Forms.Padding(4);
             this.itemInvoiceButton.Name = "itemInvoiceButton";
             this.itemInvoiceButton.Size = new System.Drawing.Size(180, 52);
@@ -116,6 +119,7 @@ namespace ApplicationDesign
             this.itemInvoiceButton.Text = "Add Item to Invoice";
             this.addItemToolTip.SetToolTip(this.itemInvoiceButton, "Add item to guest\'s invoice.");
             this.itemInvoiceButton.UseVisualStyleBackColor = true;
+            this.itemInvoiceButton.Click += new System.EventHandler(this.itemInvoiceButton_Click);
             // 
             // itemCodeLabel
             // 
@@ -144,7 +148,7 @@ namespace ApplicationDesign
             this.reservationIDPanel.Location = new System.Drawing.Point(315, 171);
             this.reservationIDPanel.Margin = new System.Windows.Forms.Padding(4);
             this.reservationIDPanel.Name = "reservationIDPanel";
-            this.reservationIDPanel.Size = new System.Drawing.Size(882, 191);
+            this.reservationIDPanel.Size = new System.Drawing.Size(882, 205);
             this.reservationIDPanel.TabIndex = 3;
             // 
             // guestReservationLabel
@@ -164,7 +168,7 @@ namespace ApplicationDesign
             this.reservationListBox.ItemHeight = 16;
             this.reservationListBox.Location = new System.Drawing.Point(385, 103);
             this.reservationListBox.Name = "reservationListBox";
-            this.reservationListBox.Size = new System.Drawing.Size(268, 68);
+            this.reservationListBox.Size = new System.Drawing.Size(268, 52);
             this.reservationListBox.TabIndex = 10;
             // 
             // findReservationButton
@@ -174,7 +178,7 @@ namespace ApplicationDesign
             this.findReservationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.findReservationButton.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.findReservationButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
-            this.findReservationButton.Location = new System.Drawing.Point(684, 119);
+            this.findReservationButton.Location = new System.Drawing.Point(684, 34);
             this.findReservationButton.Margin = new System.Windows.Forms.Padding(4);
             this.findReservationButton.Name = "findReservationButton";
             this.findReservationButton.Size = new System.Drawing.Size(180, 52);
@@ -182,6 +186,7 @@ namespace ApplicationDesign
             this.findReservationButton.Text = "Find Reservation";
             this.findReservationToolTip.SetToolTip(this.findReservationButton, "Find the guest\'s reservation so that the item code(s) can be applied.");
             this.findReservationButton.UseVisualStyleBackColor = true;
+            this.findReservationButton.Click += new System.EventHandler(this.findReservationButton_Click);
             // 
             // invalidReservationIDLabel
             // 
@@ -244,42 +249,7 @@ namespace ApplicationDesign
             this.reservationIDTextBox.Size = new System.Drawing.Size(267, 23);
             this.reservationIDTextBox.TabIndex = 5;
             this.reservationIDTextBox.Text = "Enter Reservation ID";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(437, 410);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(211, 180);
-            this.listBox1.TabIndex = 12;
-            // 
-            // buttonAdd
-            // 
-            this.buttonAdd.Location = new System.Drawing.Point(671, 423);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(73, 45);
-            this.buttonAdd.TabIndex = 13;
-            this.buttonAdd.Text = "Add";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            // 
-            // removeButton
-            // 
-            this.removeButton.Location = new System.Drawing.Point(671, 491);
-            this.removeButton.Name = "removeButton";
-            this.removeButton.Size = new System.Drawing.Size(73, 45);
-            this.removeButton.TabIndex = 14;
-            this.removeButton.Text = "Remove";
-            this.removeButton.UseVisualStyleBackColor = true;
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 16;
-            this.listBox2.Location = new System.Drawing.Point(768, 410);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(211, 180);
-            this.listBox2.TabIndex = 15;
+            this.reservationIDTextBox.Click += new System.EventHandler(this.reservationIDTextBox_Click);
             // 
             // slectedItemsLabel
             // 
@@ -295,19 +265,109 @@ namespace ApplicationDesign
             this.slectedItemsLabel.Text = "Selected Items:";
             this.itemCodeToolTip.SetToolTip(this.slectedItemsLabel, "Find the item code to apply to the guest\'s invoice.");
             // 
+            // itemsAvailableListBox
+            // 
+            this.itemsAvailableListBox.FormattingEnabled = true;
+            this.itemsAvailableListBox.ItemHeight = 16;
+            this.itemsAvailableListBox.Items.AddRange(new object[] {
+            "Long-Distance Phone Charge",
+            "Movie Rental",
+            "Dry-Cleaning"});
+            this.itemsAvailableListBox.Location = new System.Drawing.Point(437, 410);
+            this.itemsAvailableListBox.Name = "itemsAvailableListBox";
+            this.itemsAvailableListBox.Size = new System.Drawing.Size(211, 180);
+            this.itemsAvailableListBox.TabIndex = 12;
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.BackColor = System.Drawing.Color.White;
+            this.buttonAdd.Location = new System.Drawing.Point(671, 440);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(73, 45);
+            this.buttonAdd.TabIndex = 13;
+            this.buttonAdd.Text = "Add";
+            this.buttonAdd.UseVisualStyleBackColor = false;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // removeButton
+            // 
+            this.removeButton.BackColor = System.Drawing.Color.White;
+            this.removeButton.Location = new System.Drawing.Point(671, 520);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(73, 45);
+            this.removeButton.TabIndex = 14;
+            this.removeButton.Text = "Remove";
+            this.removeButton.UseVisualStyleBackColor = false;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
+            // 
+            // selecteditemsListBox
+            // 
+            this.selecteditemsListBox.FormattingEnabled = true;
+            this.selecteditemsListBox.ItemHeight = 16;
+            this.selecteditemsListBox.Location = new System.Drawing.Point(768, 410);
+            this.selecteditemsListBox.Name = "selecteditemsListBox";
+            this.selecteditemsListBox.Size = new System.Drawing.Size(211, 180);
+            this.selecteditemsListBox.TabIndex = 15;
+            this.selecteditemsListBox.SelectedValueChanged += new System.EventHandler(this.selecteditemsListBox_SelectedValueChanged);
+            // 
+            // invalidClientSelectionLabel
+            // 
+            this.invalidClientSelectionLabel.AutoSize = true;
+            this.invalidClientSelectionLabel.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invalidClientSelectionLabel.ForeColor = System.Drawing.Color.Red;
+            this.invalidClientSelectionLabel.Location = new System.Drawing.Point(701, 332);
+            this.invalidClientSelectionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.invalidClientSelectionLabel.MinimumSize = new System.Drawing.Size(267, 16);
+            this.invalidClientSelectionLabel.Name = "invalidClientSelectionLabel";
+            this.invalidClientSelectionLabel.Size = new System.Drawing.Size(312, 38);
+            this.invalidClientSelectionLabel.TabIndex = 12;
+            this.invalidClientSelectionLabel.Text = "You must confirm the guest name\r\nby selecting the Find Reservation button.";
+            this.invalidClientSelectionLabel.Visible = false;
+            // 
+            // invalidSelecteditemsLabel
+            // 
+            this.invalidSelecteditemsLabel.AutoSize = true;
+            this.invalidSelecteditemsLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invalidSelecteditemsLabel.ForeColor = System.Drawing.Color.Red;
+            this.invalidSelecteditemsLabel.Location = new System.Drawing.Point(764, 594);
+            this.invalidSelecteditemsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.invalidSelecteditemsLabel.MinimumSize = new System.Drawing.Size(267, 16);
+            this.invalidSelecteditemsLabel.Name = "invalidSelecteditemsLabel";
+            this.invalidSelecteditemsLabel.Size = new System.Drawing.Size(267, 46);
+            this.invalidSelecteditemsLabel.TabIndex = 17;
+            this.invalidSelecteditemsLabel.Text = "No items were selected \r\nto be removed.";
+            this.invalidSelecteditemsLabel.Visible = false;
+            // 
+            // invalidAddedItemsLabel
+            // 
+            this.invalidAddedItemsLabel.AutoSize = true;
+            this.invalidAddedItemsLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invalidAddedItemsLabel.ForeColor = System.Drawing.Color.Red;
+            this.invalidAddedItemsLabel.Location = new System.Drawing.Point(995, 594);
+            this.invalidAddedItemsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.invalidAddedItemsLabel.MinimumSize = new System.Drawing.Size(267, 16);
+            this.invalidAddedItemsLabel.Name = "invalidAddedItemsLabel";
+            this.invalidAddedItemsLabel.Size = new System.Drawing.Size(267, 46);
+            this.invalidAddedItemsLabel.TabIndex = 18;
+            this.invalidAddedItemsLabel.Text = "No items were selected \r\nto be added.";
+            this.invalidAddedItemsLabel.Visible = false;
+            // 
             // ConciergeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(141)))), ((int)(((byte)(183)))));
-            this.ClientSize = new System.Drawing.Size(1210, 629);
+            this.ClientSize = new System.Drawing.Size(1210, 657);
+            this.Controls.Add(this.invalidAddedItemsLabel);
+            this.Controls.Add(this.invalidClientSelectionLabel);
+            this.Controls.Add(this.invalidSelecteditemsLabel);
             this.Controls.Add(this.slectedItemsLabel);
-            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.selecteditemsListBox);
             this.Controls.Add(this.itemInvoiceButton);
             this.Controls.Add(this.removeButton);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.itemCodeLabel);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.itemsAvailableListBox);
             this.Controls.Add(this.reservationIDPanel);
             this.Controls.Add(this.designPanel);
             this.Controls.Add(this.conciergeFormPanel);
@@ -348,10 +408,13 @@ namespace ApplicationDesign
         private System.Windows.Forms.ToolTip findReservationToolTip;
         private System.Windows.Forms.Label guestReservationLabel;
         private System.Windows.Forms.ListBox reservationListBox;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox itemsAvailableListBox;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button removeButton;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox selecteditemsListBox;
         private System.Windows.Forms.Label slectedItemsLabel;
+        private System.Windows.Forms.Label invalidClientSelectionLabel;
+        private System.Windows.Forms.Label invalidSelecteditemsLabel;
+        private System.Windows.Forms.Label invalidAddedItemsLabel;
     }
 }

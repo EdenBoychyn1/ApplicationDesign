@@ -19,6 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ApplicationDesign.Models;
 
 namespace ApplicationDesign
 {
@@ -28,6 +29,128 @@ namespace ApplicationDesign
         {
             InitializeComponent();
         }
+
+        #region Properties
+        ReservationModel model = new ReservationModel();
+
+        #endregion
+
+        #region Events
+        private void roomTypeButton_Click(object sender, EventArgs e)
+        {
+            if (housekeepingRoomTypeComboBox.SelectedIndex < 0)
+            {
+                invalidRoomTypeLabel.Visible = true;
+            }
+            else
+            {
+                string room_type = housekeepingRoomTypeComboBox.SelectedItem.ToString();
+                if (room_type == "Single")
+                {
+                    roomNumbersListBox.DataSource = model.RoomList(room_type);
+                }
+                else if (room_type == "Double")
+                {
+                    roomNumbersListBox.DataSource = model.RoomList(room_type);
+                }
+                else
+                {
+                    roomNumbersListBox.DataSource = model.RoomList(room_type);
+                }
+
+                invalidRoomTypeLabel.Visible = false;
+            }
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            bool similarItem = false;
+            invalidSelectedRoomsLabel.Visible = false;
+            invalidAddedRoomsLabel.Visible = false;
+            foreach (string listItem in selectedRoomNumbersListBox.Items)
+            {
+                if (listItem == roomNumbersListBox.SelectedItem.ToString())
+                {
+                    invalidAlreadySelectedLabel.Visible = true;
+                    similarItem = true;
+                    break;
+                }
+            }
+
+            if (!similarItem)
+            {
+                selectedRoomNumbersListBox.Items.Add(roomNumbersListBox.SelectedItem.ToString());
+            }
+        }
+
+
+        private void removeButton_Click(object sender, EventArgs e)
+        {
+            if (selectedRoomNumbersListBox.Items.Count <= 0)
+            {
+                invalidSelectedRoomsLabel.Visible = true;
+            }
+            else
+            {
+                MoveListBoxItemsBack(selectedRoomNumbersListBox);
+            }
+        }
+
+        private void roomStatusButton_Click(object sender, EventArgs e)
+        {
+            if (selectedRoomNumbersListBox.Items.Count <= 0)
+            {
+                invalidAddedRoomsLabel.Visible = true;
+            }
+            else
+            {
+                int room_number;
+                foreach (string item in selectedRoomNumbersListBox.Items)
+                {
+                    room_number = Int32.Parse(item);
+                    model.UpdateRoom(room_number);
+                }
+
+                ResetForm();
+            }
+        }
+
+        private void roomNumbersListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            invalidAlreadySelectedLabel.Visible = false;
+        }
+
+        #endregion
+
+        #region Methods/Functions
+        private void MoveListBoxItems(ListBox source, ListBox destination)
+        {
+            ListBox.SelectedObjectCollection sourceItems = source.SelectedItems;
+            foreach (var item in sourceItems)
+            {
+                destination.Items.Add(item);
+            }
+        }
+
+        private void MoveListBoxItemsBack(ListBox source)
+        {
+            ListBox.SelectedObjectCollection sourceItems = source.SelectedItems;
+            while (source.SelectedItems.Count > 0)
+            {
+                source.Items.Remove(source.SelectedItems[0]);
+            }
+        }
+
+        private void ResetForm()
+        {
+            housekeepingRoomTypeComboBox.Items.Clear();
+            //roomNumbersListBox.Items.Clear();
+            selectedRoomNumbersListBox.Items.Clear();
+        }
+
+
+        #endregion
+
 
     }
 }

@@ -77,7 +77,7 @@ namespace ApplicationDesign
         {
             guest_phone_number = guestsPhoneTextBox.Text;
             List<GuestModel> list = new List<GuestModel>();
-            list = model.FindGuestByPhone(guest_phone_number);
+            list = model.FindGuest(guest_phone_number);
             if (guestsPhoneTextBox.Text == "Enter Guest's Phone Number" || guestsPhoneTextBox.Text.Equals("") || list.Count == 0)
             {
                 invalidPhoneLabel.Visible = true;
@@ -128,6 +128,8 @@ namespace ApplicationDesign
                 }
 
                 invalidRoomNumberLabel.Visible = false;
+
+
             }
 
         }
@@ -175,14 +177,18 @@ namespace ApplicationDesign
                 reservationModel.AddReservation(startDate, endDate, client_id, room_id);
 
                 reservationModel.UpdateOccupiedRoom(room_id);
-
+                ResetForm();
             }
 
         }
 
         private void ResetForm()
         {
-            guestsPhoneTextBox.Text = string.Empty; 
+            guestsPhoneTextBox.Text = string.Empty;
+            findGuestListBox.Items.Clear();
+            roomTypeDropDownBox.Items.Clear();
+            reservationStartDateDTP.Value = DateTime.Now;
+            reservationEndDateDTP.Value = DateTime.Now;
 
         }
     }
