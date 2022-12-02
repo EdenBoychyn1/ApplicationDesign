@@ -102,12 +102,25 @@ namespace ApplicationDesign
             else
             {
                 invalidClientSelectionLabel.Visible = false;
+
                 GuestModel guestModel = new GuestModel();
+                ConciergeModel conciergeModel = new ConciergeModel();
                 int reservation_id = Int32.Parse(reservationIDTextBox.Text);
                 string reservation_name = guestModel.ReservationName(reservation_id);
+                int client_id = conciergeModel.FindClientID(reservation_id);
+                int item_code = 0;
+                int invoice_id = conciergeModel.FindInvoiceID(reservation_id);
+                
                 if (reservation_name == null)
                 {
                     invalidReservationIDLabel.Visible = true;
+                }
+
+                foreach (string item in selecteditemsListBox.Items)
+                {
+                    item_code = conciergeModel.FindItemCode(item);
+                    double amount_charged = conciergeModel.FindAmountCharged(item);
+                    conciergeModel.AddTransaction(item_code, client_id, amount_charged, invoice_id);
                 }
             }
         }
