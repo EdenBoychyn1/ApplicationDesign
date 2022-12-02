@@ -70,30 +70,8 @@ namespace ApplicationDesign.Models
             return list;
         }
 
-        public List<GuestModel> FindGuest(int reservation_id)
-        {
-            List<GuestModel> list = new List<GuestModel>();
-            using (var connection = GetConnection())
-            {
-                connection.Open();
-                using (var command = new SqlCommand("SELECT CLIENT_L_NAME, CLIENT_F_NAME FROM CLIENTS_TBL WHERE CLIENT_PHONE= @client_phone", connection))
-                {
-                    command.Parameters.Add("@client_phone", SqlDbType.VarChar, 20); //.Value = phone;
-                    command.Prepare();
-                    using (var reader = command.ExecuteReader())
-                    {
-                        GuestModel model = new GuestModel();
-                        while (reader.Read())
-                        {
-                            model.guest_lname = reader[0].ToString();
-                            model.guest_fname = reader[1].ToString();
-                            list.Add(model);
-                        }
-                    }
-                }
-            }
-            return list;
-        }
+        
+        
 
 
         public List<int> RoomList(string room_desc)
