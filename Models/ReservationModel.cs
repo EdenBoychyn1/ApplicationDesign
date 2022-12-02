@@ -65,6 +65,29 @@ namespace ApplicationDesign.Models
             }
             return client_id;
         }
+
+        public List<int> RoomList(string room_desc)
+        {
+            List<int> room_list = new List<int>();
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                using (var command = new SqlCommand("SELECT ROOM_NUMBER FROM ROOMS_TBL WHERE ROOM_DESC=@roomDesc AND ROOM_READY=0", connection))
+                {
+                    command.Parameters.Add("@roomDesc", SqlDbType.VarChar, 40).Value = room_desc;
+                    command.Prepare();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            room_list.Add(reader.GetInt32(0));
+                        }
+                    }
+                }
+            }
+            return room_list;
+
+        }
         public void UpdateOccupiedRoom(int room_id)
         {
             int zero = 0;
@@ -86,6 +109,8 @@ namespace ApplicationDesign.Models
                 }
             }
         }
+
+
         public void AddReservation(DateTime start_date, DateTime end_date, int client_id, int room_id)
         {
             using (var connection = GetConnection())
@@ -105,6 +130,24 @@ namespace ApplicationDesign.Models
                     command.Parameters.Add(endDateParam).Value = end_date;
 
                     command.Prepare();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+        public void UpdateRoom(int room_number)
+        {
+            int room_ready = 1;
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                using (var command  = new SqlCommand("UpdateRoom", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@RoomNum", SqlDbType.Int).Value = room_number;
+                    command.Parameters.AddWithValue("@RoomReady", SqlDbType.Int).Value = room_ready;
+
                     command.ExecuteNonQuery();
                 }
             }

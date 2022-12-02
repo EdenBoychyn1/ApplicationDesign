@@ -45,7 +45,7 @@ namespace ApplicationDesign.Models
             }
         }
 
-        public List<GuestModel> FindGuestByPhone(string phone)
+        public List<GuestModel> FindGuest(string phone)
         {
             List<GuestModel> list = new List<GuestModel>();
             using (var connection = GetConnection())
@@ -54,6 +54,31 @@ namespace ApplicationDesign.Models
                 using (var command = new SqlCommand("SELECT CLIENT_L_NAME, CLIENT_F_NAME FROM CLIENTS_TBL WHERE CLIENT_PHONE= @client_phone", connection))
                 {
                     command.Parameters.Add("@client_phone", SqlDbType.VarChar, 20).Value = phone;
+                    command.Prepare();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        GuestModel model = new GuestModel();
+                        while (reader.Read())
+                        {
+                            model.guest_lname = reader[0].ToString();
+                            model.guest_fname = reader[1].ToString();
+                            list.Add(model);
+                        }
+                    }
+                }
+            }
+            return list;
+        }
+
+        public List<GuestModel> FindGuest(int reservation_id)
+        {
+            List<GuestModel> list = new List<GuestModel>();
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                using (var command = new SqlCommand("SELECT CLIENT_L_NAME, CLIENT_F_NAME FROM CLIENTS_TBL WHERE CLIENT_PHONE= @client_phone", connection))
+                {
+                    command.Parameters.Add("@client_phone", SqlDbType.VarChar, 20); //.Value = phone;
                     command.Prepare();
                     using (var reader = command.ExecuteReader())
                     {
@@ -92,6 +117,58 @@ namespace ApplicationDesign.Models
             }
             return room_list;
 
+        }
+
+
+        /// <summary>
+        /// Method Overload
+        /// </summary>
+        /// <returns></returns>
+        public List<int> RoomList()
+        {
+            List<int> room_list = new List<int>();
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                using (var command = new SqlCommand("SELECT ROOM_NUMBER FROM ROOMS_TBL", connection))
+                {
+                    //command.Parameters.Add("@roomDesc", SqlDbType.VarChar, 40).Value = room_desc;
+                    command.Prepare();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            room_list.Add(reader.GetInt32(0));
+                        }
+                    }
+                }
+            }
+            return room_list;
+
+        }
+        public string ReservationName(int resId)
+        {
+            string resName = null;
+            //int security_level = new int();
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                using (var command = new SqlCommand("ReseverationName", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ResID", SqlDbType.Int).Value = resId;
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (!reader.IsDBNull(0))
+                                resName = reader.GetString(0);
+                        }
+                    }
+                }
+            }
+            return resName;
         }
         #endregion
     }
