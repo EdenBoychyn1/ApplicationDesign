@@ -74,6 +74,7 @@
     <Compile Include="FrontDeskForm.Designer.cs">
       <DependentUpon>FrontDeskForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hash\Hash.cs" />
     <Compile Include="Housekeeping1.cs">
       <SubType>Form</SubType>
     </Compile>

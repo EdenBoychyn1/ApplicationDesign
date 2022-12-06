@@ -144,4 +144,7 @@
   <metadata name="guestPhoneToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>955, 25</value>
   </metadata>
+  <metadata name="addGuestToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1202, 23</value>
+  </metadata>
 </root>

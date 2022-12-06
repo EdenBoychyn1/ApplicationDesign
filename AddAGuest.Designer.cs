@@ -210,6 +210,7 @@ namespace ApplicationDesign
             this.guestPhoneNumber.Size = new System.Drawing.Size(364, 23);
             this.guestPhoneNumber.TabIndex = 37;
             this.guestPhoneNumber.Text = "Enter Guest Phone Number";
+            this.guestPhoneNumber.Click += new System.EventHandler(this.guestPhoneNumber_Click);
             // 
             // clientPhoneNumberLabel
             // 
@@ -248,6 +249,7 @@ namespace ApplicationDesign
             this.clientEmailTextBox.Size = new System.Drawing.Size(364, 23);
             this.clientEmailTextBox.TabIndex = 33;
             this.clientEmailTextBox.Text = "Enter Guest Email";
+            this.clientEmailTextBox.Click += new System.EventHandler(this.clientEmailTextBox_Click);
             // 
             // clientEmailLabel
             // 
@@ -286,6 +288,7 @@ namespace ApplicationDesign
             this.guestLastNameTextBox.Size = new System.Drawing.Size(364, 23);
             this.guestLastNameTextBox.TabIndex = 29;
             this.guestLastNameTextBox.Text = "Enter Guest Last Name";
+            this.guestLastNameTextBox.Click += new System.EventHandler(this.guestLastNameTextBox_Click);
             // 
             // clientLastNameLabel
             // 
@@ -352,6 +355,7 @@ namespace ApplicationDesign
             this.clientFirstNameTextBox.Size = new System.Drawing.Size(364, 23);
             this.clientFirstNameTextBox.TabIndex = 25;
             this.clientFirstNameTextBox.Text = "Enter Guest First Name";
+            this.clientFirstNameTextBox.Click += new System.EventHandler(this.clientFirstNameTextBox_Click);
             // 
             // AddAGuestForm
             // 

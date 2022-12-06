@@ -98,7 +98,6 @@ namespace ApplicationDesign.Models
                         while (reader.Read())
                         {
                             invoice_id = (int) reader[0];
-
                         }   
                     }
                 }
