@@ -43,15 +43,15 @@ namespace ApplicationDesign.Models
             return room_id;
         }
 
-        public int FindClientID(string last_name)
+        public int FindClientID(string phone_number)
         {
             int client_id = 0;
             using (var connection = GetConnection())
             {
                 connection.Open();
-                using (var command = new SqlCommand("SELECT CLIENT_ID FROM CLIENTS_TBL WHERE CLIENT_L_NAME=@client_l_name", connection))
+                using (var command = new SqlCommand("SELECT CLIENT_ID FROM CLIENTS_TBL WHERE CLIENT_PHONE=@client_phone", connection))
                 {
-                    command.Parameters.Add("@client_l_name", SqlDbType.VarChar, 50).Value = last_name;
+                    command.Parameters.Add("@client_phone", SqlDbType.NVarChar, 50).Value = phone_number;
                     command.Prepare();
                     using (var reader = command.ExecuteReader())
                     {

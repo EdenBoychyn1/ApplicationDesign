@@ -134,9 +134,6 @@ namespace ApplicationDesign
 
         private void addReservationButton_Click(object sender, EventArgs e)
         {
-
-
-
             DateTime startDate = reservationStartDateDTP.Value;
             DateTime endDate = reservationEndDateDTP.Value;
             if (guestsPhoneTextBox.Text == "Enter Guest's Phone Number" || guestsPhoneTextBox.Text.Equals(""))
@@ -166,9 +163,10 @@ namespace ApplicationDesign
             else
             {
                 int room_number = Int32.Parse(roomsAvailableComboBox.SelectedValue.ToString());
-                string client_l_name = findGuestListBox.GetItemText(findGuestListBox.SelectedItem);
+                string phone_number = guestsPhoneTextBox.Text.ToString();
+                //string phone_number = findGuestListBox.GetItemText(findGuestListBox.SelectedItem).Trim();
                 int room_id = reservationModel.FindRoomID(room_number);
-                int client_id = reservationModel.FindClientID(client_l_name);
+                int client_id = reservationModel.FindClientID(phone_number);
 
                 reservationModel.AddReservation(startDate, endDate, client_id, room_id);
 
