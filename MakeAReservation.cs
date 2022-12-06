@@ -76,19 +76,15 @@ namespace ApplicationDesign
         private void findGuestButton_Click(object sender, EventArgs e)
         {
             guest_phone_number = guestsPhoneTextBox.Text;
-            List<GuestModel> list = new List<GuestModel>();
-            list = model.FindGuest(guest_phone_number);
-            if (guestsPhoneTextBox.Text == "Enter Guest's Phone Number" || guestsPhoneTextBox.Text.Equals("") || list.Count == 0)
+
+            string client_name = model.ClientName(guest_phone_number);
+            if (guestsPhoneTextBox.Text == "Enter Guest's Phone Number" || guestsPhoneTextBox.Text.Equals(""))
             {
                 invalidPhoneLabel.Visible = true;
             }
             else
             {
-                foreach (GuestModel model in list)
-                {
-                    findGuestListBox.Items.Add(model.guest_lname).ToString();
-                    findGuestListBox.Items.Add(model.guest_fname).ToString();
-                }
+                findGuestListBox.Items.Add(model.ClientName(guest_phone_number));
             }
         }
 

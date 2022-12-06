@@ -20,6 +20,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ApplicationDesign.Models;
+using ApplicationDesign.Hash;
 
 namespace ApplicationDesign
 {
@@ -44,7 +45,7 @@ namespace ApplicationDesign
         #region Events
         private void signUpButton_Click(object sender, EventArgs e)
         {
-            
+
             // TODO: NEED A TRY & CATCH
             if (employeeFirstNameTextBox.Text == "Enter Employee First Name" || employeeFirstNameTextBox.Text.Equals(""))
             {
@@ -61,12 +62,12 @@ namespace ApplicationDesign
                 invalidSecurityRoleLabel.Visible = true;
                 invalidSecurityRoleLabel.Focus();
             }
-            else if (employeePasswordTextBox.Text == "Enter Employee Password" || employeePasswordTextBox.Text.Equals(""))
+            else if (employeePasswordTextBox.Text.Equals(""))
             {
                 invalidEmployeePasswordLabel.Visible = true;
                 invalidEmployeePasswordLabel.Focus();
             }
-            else if (confirmPasswordTextBox.Text == "Confirm Password" || confirmPasswordTextBox.Text.Equals(""))
+            else if (confirmPasswordTextBox.Text.Equals(""))
             {
                 invalidEmployeePasswordLabel.Visible = true;
                 invalidEmployeePasswordLabel.Focus();
@@ -76,17 +77,20 @@ namespace ApplicationDesign
                 invalidConfirmPasswordLabel.Visible = true;
                 invalidConfirmPasswordLabel.Focus();
             }
+            else
+            {
 
-            string first_name = employeeFirstNameTextBox.Text;
-            string last_name = employeeLastNameTextBox.Text;
-            int security_number = SecurityStringToNumber(securityLevelDropDownBox.SelectedItem.ToString());
-            string password = employeePasswordTextBox.Text;
+                string first_name = employeeFirstNameTextBox.Text;
+                string last_name = employeeLastNameTextBox.Text;
+                int security_number = SecurityStringToNumber(securityLevelDropDownBox.SelectedItem.ToString());
+                string password = Hash.Hash.Hash_SHA1(employeePasswordTextBox.Text);
 
 
-            model.AddEmployee(first_name, last_name, security_number, password);
+                model.AddEmployee(first_name, last_name, security_number, password);
 
-            // TODO: NEED TO RESET FORM
-            // TODO: NEED TO HASH PASSWORD
+                ResetForm();
+                // TODO: NEED TO HASH PASSWORD
+            }
         }
 
         private void employeeFirstNameTextBox_TextChanged(object sender, EventArgs e)
@@ -160,6 +164,14 @@ namespace ApplicationDesign
                 security_number = 1;
             }
             return security_number; 
+        }
+
+        public void ResetForm()
+        {
+            employeeFirstNameTextBox.Text = string.Empty;
+            employeeLastNameTextBox.Text = string.Empty;
+            employeePasswordTextBox.Text = string.Empty;
+            confirmPasswordTextBox.Text = string.Empty;
         }
         #endregion
     }

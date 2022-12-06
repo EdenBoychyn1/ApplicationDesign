@@ -21,6 +21,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ApplicationDesign.Models;
 
+
 namespace ApplicationDesign
 {
     public partial class AddAGuestForm : Form
@@ -31,20 +32,123 @@ namespace ApplicationDesign
             InitializeComponent();
         }
 
-        private GuestModel model = new GuestModel();
+        #region Events
+        private void clientFirstNameTextBox_Click(object sender, EventArgs e)
+        {
+            clientFirstNameTextBox.SelectAll();
+            invalidClientFirstNameLabel.Visible = false;
+        }
+
+        private void guestLastNameTextBox_Click(object sender, EventArgs e)
+        {
+            guestLastNameTextBox.SelectAll();
+            invalidGuestLastNameLabel.Visible = false;
+        }
+
+        private void clientEmailTextBox_Click(object sender, EventArgs e)
+        {
+            clientEmailTextBox.SelectAll();
+            invalidGuestEmailLabel.Visible = false;
+
+        }
+
+        private void guestPhoneNumber_Click(object sender, EventArgs e)
+        {
+            guestPhoneNumber.SelectAll();
+            invalidPhoneLabel.Visible = false;
+        }
 
         // TODO: Add comments
-        // TODO: add validation 
-        // TODO: clear form
         // TODO: messages indicating add guest was successful
+
+
         private void addGuest_Click(object sender, EventArgs e)
         {
+            GuestModel model = new GuestModel();
             string first_name = clientFirstNameTextBox.Text;
             string last_name = guestLastNameTextBox.Text;
             string phone_number = guestPhoneNumber.Text;
             string email = clientEmailTextBox.Text;
 
-            model.AddGuest(first_name, last_name, phone_number, email);
+            if (first_name == "Enter Guest First Name" || first_name == "")
+            {
+                invalidClientFirstNameLabel.Visible = true;
+            }
+            else if (last_name == "Enter Guest Last Name" || last_name == "")
+            {
+                invalidGuestLastNameLabel.Visible = true;
+            }
+            else if (email == "Enter Guest Email" || email == "" || !IsValidEmail(email))
+            {
+                invalidGuestEmailLabel.Visible = true;
+            }
+            else if (phone_number == "Enter Guest Phone Number" || phone_number == "" || !IsNumeric(phone_number))
+            {
+                invalidPhoneLabel.Visible = true;
+            }
+            else
+            {
+                invalidPhoneLabel.Visible = false;
+                model.AddGuest(first_name, last_name, phone_number, email);
+                ResetForm();
+            }
         }
+        #endregion
+
+
+        #region Functions/Methods
+
+        bool IsValidEmail(string email)
+        {
+            var trimmedEmail = email.Trim();
+
+            if (trimmedEmail.EndsWith("."))
+            {
+                return false; // suggested by @TK-421
+            }
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == trimmedEmail;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        //public bool IsNumeric(string phone_number)
+        //{
+        //    bool isNumeric = false;
+        //    int n;
+        //    isNumeric = int.TryParse(phone_number, out n);
+        //    return isNumeric;
+        
+        //}
+
+        public static bool IsNumeric(string s)
+        {
+            foreach (char c in s)
+            {
+                if (!char.IsDigit(c))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public void ResetForm()
+        {
+            clientFirstNameTextBox.Text = string.Empty;
+            guestLastNameTextBox.Text = string.Empty;
+            clientEmailTextBox.Text = string.Empty;
+            guestPhoneNumber.Text = string.Empty;
+        }
+
+        #endregion
+
+
     }
 }

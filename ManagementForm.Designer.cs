@@ -388,9 +388,9 @@ namespace ApplicationDesign
             this.employeePasswordTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.employeePasswordTextBox.MinimumSize = new System.Drawing.Size(71, 20);
             this.employeePasswordTextBox.Name = "employeePasswordTextBox";
+            this.employeePasswordTextBox.PasswordChar = '*';
             this.employeePasswordTextBox.Size = new System.Drawing.Size(364, 23);
             this.employeePasswordTextBox.TabIndex = 21;
-            this.employeePasswordTextBox.Text = "Enter Employee Password";
             this.employeePasswordTextBox.Click += new System.EventHandler(this.employeePasswordTextBox_Click);
             this.employeePasswordTextBox.TextChanged += new System.EventHandler(this.employeePasswordTextBox_TextChanged);
             // 
@@ -465,9 +465,9 @@ namespace ApplicationDesign
             this.confirmPasswordTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.confirmPasswordTextBox.MinimumSize = new System.Drawing.Size(71, 20);
             this.confirmPasswordTextBox.Name = "confirmPasswordTextBox";
+            this.confirmPasswordTextBox.PasswordChar = '*';
             this.confirmPasswordTextBox.Size = new System.Drawing.Size(364, 23);
             this.confirmPasswordTextBox.TabIndex = 26;
-            this.confirmPasswordTextBox.Text = "Confirm Employee Password";
             this.confirmPasswordTextBox.Click += new System.EventHandler(this.confirmPasswordTextBox_Click);
             this.confirmPasswordTextBox.TextChanged += new System.EventHandler(this.confirmPasswordTextBox_TextChanged);
             // 

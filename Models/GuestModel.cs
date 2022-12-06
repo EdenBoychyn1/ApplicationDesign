@@ -21,7 +21,7 @@ namespace ApplicationDesign.Models
         #endregion
 
         #region Methods
-        // TODO: Prepare statement
+        
         public void AddGuest(string firstName, string lastName, string phone, string email)
         {
             // Convert nesseccary data types to match the data types in the database
@@ -33,45 +33,44 @@ namespace ApplicationDesign.Models
             using (var connection = GetConnection())
             {
                 connection.Open();
-                using (var command = new SqlCommand("INSERT INTO CLIENTS_TBL(CLIENT_F_NAME, CLIENT_L_NAME, CLIENT_PHONE, CLIENT_EMAIL) VALUES(@guestFirstName, @guestLastName, @guestPhone, @guestEmail) ", connection))
+                using (var command = new SqlCommand("AddGuest", connection))
                 {
-                    command.Parameters.AddWithValue("@guestFirstName", guest_fname);
-                    command.Parameters.AddWithValue("@guestLastName", guest_lname);
-                    command.Parameters.AddWithValue("@guestPhone", guest_phone);
-                    command.Parameters.AddWithValue("@guestEmail", guest_email);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ClientFname", SqlDbType.NVarChar).Value = guest_fname;
+                    command.Parameters.AddWithValue("@ClientLname", SqlDbType.NVarChar).Value = guest_lname;
+                    command.Parameters.AddWithValue("@Clientemail", SqlDbType.NVarChar).Value = guest_email;
+                    command.Parameters.AddWithValue("@ClientePhone", SqlDbType.NVarChar).Value = guest_phone;
 
                     command.ExecuteNonQuery();
                 }
             }
         }
 
-        public List<GuestModel> FindGuest(string phone)
+
+        public string ClientName(string client_phone)
         {
-            List<GuestModel> list = new List<GuestModel>();
+            string client_name = null;
+            //int security_level = new int();
             using (var connection = GetConnection())
             {
                 connection.Open();
-                using (var command = new SqlCommand("SELECT CLIENT_L_NAME, CLIENT_F_NAME FROM CLIENTS_TBL WHERE CLIENT_PHONE= @client_phone", connection))
+                using (var command = new SqlCommand("ClientName", connection))
                 {
-                    command.Parameters.Add("@client_phone", SqlDbType.VarChar, 20).Value = phone;
-                    command.Prepare();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ClientPhone", SqlDbType.Int).Value = client_phone;
+
                     using (var reader = command.ExecuteReader())
                     {
-                        GuestModel model = new GuestModel();
                         while (reader.Read())
                         {
-                            model.guest_lname = reader[0].ToString();
-                            model.guest_fname = reader[1].ToString();
-                            list.Add(model);
+                            if (!reader.IsDBNull(0))
+                                client_name = reader.GetString(0);
                         }
                     }
                 }
             }
-            return list;
+            return client_name;
         }
-
-        
-        
 
 
         public List<int> RoomList(string room_desc)
@@ -97,33 +96,6 @@ namespace ApplicationDesign.Models
 
         }
 
-
-        /// <summary>
-        /// Method Overload
-        /// </summary>
-        /// <returns></returns>
-        public List<int> RoomList()
-        {
-            List<int> room_list = new List<int>();
-            using (var connection = GetConnection())
-            {
-                connection.Open();
-                using (var command = new SqlCommand("SELECT ROOM_NUMBER FROM ROOMS_TBL", connection))
-                {
-                    //command.Parameters.Add("@roomDesc", SqlDbType.VarChar, 40).Value = room_desc;
-                    command.Prepare();
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            room_list.Add(reader.GetInt32(0));
-                        }
-                    }
-                }
-            }
-            return room_list;
-
-        }
         public string ReservationName(int resId)
         {
             string resName = null;

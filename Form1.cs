@@ -82,41 +82,45 @@ namespace ApplicationDesign
         {
             string userId = userIDTextBox.Text;
             string employeePassword = passwordTextBox.Text;
-            
+
+
+            string hashed_password = Hash.Hash.Hash_SHA1(employeePassword);
             if (userIDTextBox.Text == "Enter User ID" || userIDTextBox.Text.Equals("") || passwordTextBox.Text == "Enter Password" || passwordTextBox.Text.Equals(""))
             {
                 invalidPasswordLabel.Visible = true;
                 userIDTextBox.Focus();
                 passwordTextBox.Focus();
             }
-            else if (model.LogInValidation(userId, employeePassword) == true)
+            else if (model.LogInValidation(userId, hashed_password) == true)
             {
-                MessageBox.Show("User ID is in the database.");
-                user_id = Int32.Parse(userId);
-                int number = Int32.Parse(model.SecurityLevel(user_id));
-                switch (number)
-                {
-                    case 5:
-                        ManagementForm managementForm = new ManagementForm();
-                        managementForm.Show();
-                        break;
-                    case 4:
-                        FrontDeskForm frontDeskForm = new FrontDeskForm();
-                        frontDeskForm.Show();
-                        break;
-                    case 3:
-                        ConciergeForm conciergeForm = new ConciergeForm();
-                        conciergeForm.Show();
-                        break;
-                    case 2:
-                        HousekeepingForm housekeepingForm = new HousekeepingForm();
-                        housekeepingForm.Show();
-                        break;
-                    case 1:
-                        RestaurantForm restaurantForm = new RestaurantForm();
-                        restaurantForm.Show();
-                        break;
-                }
+
+                    MessageBox.Show("User ID is in the database.");
+                    user_id = Int32.Parse(userId);
+                    int number = Int32.Parse(model.SecurityLevel(user_id));
+                    switch (number)
+                    {
+                        case 5:
+                            ManagementForm managementForm = new ManagementForm();
+                            managementForm.Show();
+                            break;
+                        case 4:
+                            FrontDeskForm frontDeskForm = new FrontDeskForm();
+                            frontDeskForm.Show();
+                            break;
+                        case 3:
+                            ConciergeForm conciergeForm = new ConciergeForm();
+                            conciergeForm.Show();
+                            break;
+                        case 2:
+                            HousekeepingForm housekeepingForm = new HousekeepingForm();
+                            housekeepingForm.Show();
+                            break;
+                        case 1:
+                            RestaurantForm restaurantForm = new RestaurantForm();
+                            restaurantForm.Show();
+                            break;
+                    }
+                
             }
             else
             {

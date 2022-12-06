@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ApplicationDesign.Db;
+using ApplicationDesign.Hash;
 
 namespace ApplicationDesign.Models
 {
@@ -43,13 +44,12 @@ namespace ApplicationDesign.Models
 
         #region Methods
         /// <summary>
-        /// ************************NEEDS TO BE A PREPARED STATEMENT*********************************************
+        /// 
         /// </summary>
         /// <param name="firstName"></param>
         /// <param name="lastName"></param>
         /// <param name="securityLevel"></param>
         /// <param name="password"></param>
-        // TODO: NEEDS TO BE A PREPARED STATEMENT
         public void AddEmployee(string firstName, string lastName, int securityLevel, string password)
         {
             // Convert nesseccary data types to match the data types in the database
@@ -61,12 +61,13 @@ namespace ApplicationDesign.Models
             using (var connection = GetConnection())
             {
                 connection.Open();
-                using (var command = new SqlCommand("INSERT INTO EMPLOYEE_TBL(EMPLOYEE_FIRSTNAME, EMPLOYEE_LASTNAME, EMPLOYEE_SEC_LEVEL, EMPLOYEE_PASSWORD) VALUES(@employeeFirstName, @employeeLastName, @securityLevel, @employeePassword) ", connection))
+                using (var command = new SqlCommand("AddEmployee", connection))
                 {
-                    command.Parameters.AddWithValue("@employeeFirstName", employee_f_name);
-                    command.Parameters.AddWithValue("@employeeLastName", employee_l_name);
-                    command.Parameters.AddWithValue("@securityLevel", security_level);
-                    command.Parameters.AddWithValue("@employeePassword", employee_password);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@EmployeeFname", SqlDbType.NVarChar).Value = employee_f_name;
+                    command.Parameters.AddWithValue("@Employeelname", SqlDbType.NVarChar).Value = employee_l_name;
+                    command.Parameters.AddWithValue("@EmployeeSecLevel", SqlDbType.NVarChar).Value = security_level;
+                    command.Parameters.AddWithValue("@EmployeePass", SqlDbType.NVarChar).Value = employee_password;
 
                     command.ExecuteNonQuery();
                 }
@@ -76,15 +77,14 @@ namespace ApplicationDesign.Models
         public string SecurityLevel(int userId)
         {
             user_id = userId;
-            //int security_level = new int();
             using (var connection = GetConnection())
             {
                 connection.Open();
                 using (var command = new SqlCommand("SELECT EMPLOYEE_SEC_LEVEL FROM EMPLOYEE_TBL WHERE EMPLOYEE_ID= " + user_id, connection))
                 {
-                    SqlParameter userIdParam = new SqlParameter("@userid", user_id);
+                    command.Parameters.Add("@userid", SqlDbType.Int).Value = user_id;
+                    command.Prepare();
 
-                    command.Parameters.Add(userIdParam);
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -113,11 +113,14 @@ namespace ApplicationDesign.Models
                 using (var connection = GetConnection())
                 {
                     connection.Open();
-                    using (var sqa = new SqlDataAdapter("SELECT COUNT(*) FROM EMPLOYEE_TBL WHERE EMPLOYEE_ID = '" + user_id + "' AND EMPLOYEE_PASSWORD = '" + user_password + "'", connection))
+                    using (var sqa = new SqlDataAdapter("SELECT COUNT(*) FROM EMPLOYEE_TBL WHERE EMPLOYEE_ID =@UserId AND EMPLOYEE_PASSWORD =@password", connection))
                     {
                         DataTable dt = new DataTable();
+                        sqa.SelectCommand.Parameters.Add("@UserId", SqlDbType.Int).Value = user_id;
+                        sqa.SelectCommand.Parameters.Add("@Password", SqlDbType.VarChar).Value = user_password;
 
-                        sqa.Fill(dt); 
+                        
+                        sqa.Fill(dt);
 
                         if (dt.Rows[0][0].ToString() == "1")
                         {
@@ -132,6 +135,18 @@ namespace ApplicationDesign.Models
             }
             return loginValid;
         }
+
+        //public string Hash(string password)
+        //{
+        //    var bytes = new UTF8Encoding().GetBytes(password);
+        //    byte[] hashBytes;
+        //    using (var algorithm = new System.Security.Cryptography.SHA512Managed())
+        //    {
+        //        hashBytes = algorithm.ComputeHash(bytes);
+        //    }
+        //    string hashed_password = Convert.ToBase64String(hashBytes);
+        //    return hashed_password;
+        //}
     }
     #endregion
 }
