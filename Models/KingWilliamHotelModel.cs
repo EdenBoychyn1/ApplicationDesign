@@ -137,6 +137,121 @@ namespace ApplicationDesign.Models
         }
 
 
+        public List<string> ReservationFill(int resId)
+        {
+            List<string> resList = new List<string>();
+            //int security_level = new int();
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                using (var command = new SqlCommand("ReseverationFill", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ResID", SqlDbType.NVarChar).Value = resId;
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (!reader.IsDBNull(0))
+                                resList.Add(reader.GetString(0));
+                            resList.Add(reader.GetString(1));
+                            resList.Add(reader.GetString(2));
+                            resList.Add(reader.GetString(3));
+                            resList.Add(reader.GetDateTime(4).ToString());
+                            resList.Add(reader.GetDateTime(5).ToString());
+                            resList.Add(reader.GetSqlInt32(6).ToString());
+                        }
+
+                    }
+                }
+            }
+            return resList;
+        }
+
+        public List<string> ReservationFillLastName(string GuestLastName)
+        {
+            List<string> resList = new List<string>();
+            //int security_level = new int();
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                using (var command = new SqlCommand("FindGuestWithLastName", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@GuestLName", SqlDbType.NVarChar).Value = GuestLastName;
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (!reader.IsDBNull(0))
+                            resList.Add(reader.GetInt32(0).ToString());//id
+                            resList.Add(reader.GetString(1));//fname
+                            resList.Add(reader.GetString(2));//last
+                            resList.Add(reader.GetString(3));//email
+                            resList.Add(reader.GetString(4));//phone
+                            resList.Add(reader.GetDateTime(5).ToString());//start
+                            resList.Add(reader.GetDateTime(6).ToString());//end
+                            resList.Add(reader.GetSqlInt32(7).ToString());//room
+                        }
+
+                    }
+                }
+            }
+            return resList;
+        }
+
+
+        public void ReservationUpdate(int resId, string guestFname, string guestLname, string guestEmail, string phone, string resStart, string resEnd, string roomNum)
+        {
+
+
+            //int security_level = new int();
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                using (var command = new SqlCommand("ReseverationUpdate", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ResID", SqlDbType.NVarChar).Value = resId;
+                    command.Parameters.AddWithValue("@ClientFname", SqlDbType.NVarChar).Value = guestFname;
+                    command.Parameters.AddWithValue("@ClientLname", SqlDbType.NVarChar).Value = guestLname;
+                    command.Parameters.AddWithValue("@Clientemail", SqlDbType.NVarChar).Value = guestEmail;
+                    command.Parameters.AddWithValue("@ClientePhone", SqlDbType.NVarChar).Value = phone;
+                    command.Parameters.AddWithValue("@ResStart", SqlDbType.NVarChar).Value = resStart;
+                    command.Parameters.AddWithValue("@ResEnd", SqlDbType.NVarChar).Value = resEnd;
+                    command.Parameters.AddWithValue("@RoomNum", SqlDbType.NVarChar).Value = roomNum;
+
+
+                    command.ExecuteNonQuery();
+
+                }
+            }
+        }
+
+            public void ReservationDelete(int resId)
+            {
+
+
+                //int security_level = new int();
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    using (var command = new SqlCommand("ReseverationDelete", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@ResID", SqlDbType.NVarChar).Value = resId;
+
+
+
+                        command.ExecuteNonQuery();
+
+                    }
+                }
+
+            }
+
     }
     #endregion
 }
