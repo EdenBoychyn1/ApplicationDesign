@@ -121,6 +121,8 @@ namespace ApplicationDesign
                     double amount_charged = conciergeModel.FindAmountCharged(item);
                     conciergeModel.AddTransaction(item_code, client_id, amount_charged, invoice_id);
                 }
+
+                ResetForm();
             }
         }
         #endregion
@@ -140,9 +142,18 @@ namespace ApplicationDesign
             ListBox.SelectedObjectCollection sourceItems = source.SelectedItems;
             while (source.SelectedItems.Count > 0)
             {
-                source.SelectedItems.Remove(source.SelectedItems[0]);
+                source.Items.Remove(source.SelectedItems[0]);
 
             }
+        }
+
+
+        private void ResetForm()
+        {
+            reservationIDTextBox.Text = string.Empty;
+            reservationListBox.Items.Clear();
+            selecteditemsListBox.Items.Clear();
+        
         }
         #endregion
     }
