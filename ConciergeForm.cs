@@ -122,6 +122,8 @@ namespace ApplicationDesign
                     double amount_charged = conciergeModel.FindAmountCharged(item);
                     conciergeModel.AddTransaction(item_code, client_id, amount_charged, invoice_id);
                 }
+
+                ResetForm();
             }
         }
 
@@ -149,6 +151,14 @@ namespace ApplicationDesign
 
         #endregion
 
+        #region Functions
 
+        public void ResetForm()
+        {
+            reservationIDTextBox.Text = string.Empty;
+            reservationListBox.Items.Clear();
+            selecteditemsListBox.Items.Clear();
+        }
+        #endregion
     }
 }

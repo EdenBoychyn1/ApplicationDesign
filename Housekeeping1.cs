@@ -79,6 +79,7 @@ namespace ApplicationDesign
 
             if (!similarItem)
             {
+
                 selectedRoomNumbersListBox.Items.Add(roomNumbersListBox.SelectedItem.ToString());
             }
         }
@@ -93,6 +94,7 @@ namespace ApplicationDesign
             else
             {
                 MoveListBoxItemsBack(selectedRoomNumbersListBox);
+
             }
         }
 
@@ -141,10 +143,11 @@ namespace ApplicationDesign
             }
         }
 
+
+
+
         private void ResetForm()
         {
-            housekeepingRoomTypeComboBox.Items.Clear();
-            //roomNumbersListBox.Items.Clear();
             selectedRoomNumbersListBox.Items.Clear();
         }
 
