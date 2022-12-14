@@ -229,6 +229,21 @@ namespace ApplicationDesign
                 housekeepingButton.Enabled = false;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string number = model.SecurityLevel(user_id);
+            if (number == "5")
+            {
+                Invoice invoice = new Invoice();
+                invoice.Show();
+            }
+            else
+            {
+                MessageBox.Show("Error, your security level does not allow you to access this.");
+                button1.Enabled = false;
+            }
+        }
     }
 
     #endregion
