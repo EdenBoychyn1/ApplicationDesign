@@ -83,7 +83,7 @@ namespace ApplicationDesign
                 string first_name = employeeFirstNameTextBox.Text;
                 string last_name = employeeLastNameTextBox.Text;
                 int security_number = SecurityStringToNumber(securityLevelDropDownBox.SelectedItem.ToString());
-                string password = Hash.Hash.Hash_SHA1(employeePasswordTextBox.Text);
+                string password = Hash.Hash.PasswordHash(employeePasswordTextBox.Text);
 
 
                 model.AddEmployee(first_name, last_name, security_number, password);

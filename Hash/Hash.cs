@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace ApplicationDesign.Hash
 {
-    class Hash
+    abstract class Hash
     {
-        public static string Hash_SHA1(string input)
+        public static string PasswordHash(string employee_password)
         {
-            using (SHA1Managed sha1 = new SHA1Managed())
+            using (SHA1Managed SHA1 = new SHA1Managed())
             {
-                var hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(input));
-                var sb = new StringBuilder(hash.Length);
+                byte[] hash = SHA1.ComputeHash(Encoding.UTF8.GetBytes(employee_password));
+                StringBuilder hashedPassword = new StringBuilder(hash.Length);
 
-                foreach (byte b in hash)
+                foreach (byte bit in hash)
                 {
-                    sb.Append(b.ToString("X2"));
+                    hashedPassword.Append(bit.ToString("X2"));
                 }
 
-                return sb.ToString();
+                return hashedPassword.ToString();
             }
         }
     }

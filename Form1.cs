@@ -84,7 +84,7 @@ namespace ApplicationDesign
             string employeePassword = passwordTextBox.Text;
 
 
-            string hashed_password = Hash.Hash.Hash_SHA1(employeePassword);
+            string hashed_password = Hash.Hash.PasswordHash(employeePassword);
             if (userIDTextBox.Text == "Enter User ID" || userIDTextBox.Text.Equals("") || passwordTextBox.Text == "Enter Password" || passwordTextBox.Text.Equals(""))
             {
                 invalidPasswordLabel.Visible = true;
