@@ -272,7 +272,7 @@ namespace ApplicationDesign
             this.itemsAvailableListBox.Items.AddRange(new object[] {
             "Long-Distance Phone Charge",
             "Movie Rental",
-            "Dry-Cleaning"});
+            "Dry-Cleaning,"});
             this.itemsAvailableListBox.Location = new System.Drawing.Point(437, 410);
             this.itemsAvailableListBox.Name = "itemsAvailableListBox";
             this.itemsAvailableListBox.Size = new System.Drawing.Size(211, 180);
