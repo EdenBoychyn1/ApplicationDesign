@@ -98,8 +98,6 @@ namespace ApplicationDesign
         }
 
         private void findReservationButton_Click(object sender, EventArgs e)
-
-            
         {
             string ResId = reservationIDTextBox.Text;
 
