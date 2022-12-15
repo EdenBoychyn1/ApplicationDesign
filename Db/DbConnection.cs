@@ -21,7 +21,9 @@ namespace ApplicationDesign.Db
         /// </summary>
         public DbConnection()
         {
-            connectionString = "Data Source=LAPTOP-0FETGFJO;Initial Catalog=KingWilliamHotelDatabase;Integrated Security=True";
+            connectionString = "Data Source = (LocalDB)\\MSSQLLocalDB; Initial Catalog = KingWilliamHotelDatabase; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False";
+
+
         }
 
 

@@ -99,6 +99,8 @@ namespace ApplicationDesign
 
         private void findReservationButton_Click(object sender, EventArgs e)
         {
+            frontDeskListBox.Items.Clear();
+            textBox1.Clear();
             string ResId = reservationIDTextBox.Text;
 
             List<string> resList = new List<string>(model.ReservationFill(Int32.Parse(ResId)));
@@ -114,8 +116,13 @@ namespace ApplicationDesign
                 textBox2.Text = resList[2];
                 textBox3.Text = resList[3];
                 textBox4.Text = resList[6];
-                reservationStartDateDTP.Text = resList[4];
-                reservationEndDateDTP.Text = resList[5];
+                reservationStartDateDTP.Text = resList[5];
+                reservationEndDateDTP.Text = resList[4];
+
+                string guestFullName = resList[0] + " " + resList[1];
+
+                frontDeskListBox.Items.Add(guestFullName);
+                
             }
 
         }
@@ -137,7 +144,9 @@ namespace ApplicationDesign
             string resStart = reservationStartDateDTP.Text;
             string resEnd = reservationEndDateDTP.Text;
             string roomNum = textBox4.Text;
-            
+            frontDeskListBox.Items.Clear();
+            textBox1.Clear();
+
 
             if (reservationIDTextBox.Text.Equals("") || guestFirstNameTextBox.Text.Equals("") || guestLastNameTextBox.Text.Equals("") || textBox2.Text.Equals("") || textBox3.Text.Equals("") || reservationStartDateDTP.Text.Equals("") || reservationEndDateDTP.Text.Equals("") || textBox4.Text.Equals(""))
             {
@@ -155,6 +164,12 @@ namespace ApplicationDesign
                 {
                     model.ReservationUpdate(Int32.Parse(ResId), guestFname, guestLname, guestEmail, phone, resStart, resEnd, roomNum);
                     MessageBox.Show("Reservation Updated");
+                    reservationIDTextBox.Clear();
+                    guestFirstNameTextBox.Clear();
+                    guestLastNameTextBox.Clear();
+                    textBox2.Clear();
+                    textBox3.Clear();
+                    textBox4.Clear();
                 }
                 catch
                 {
@@ -167,6 +182,8 @@ namespace ApplicationDesign
         private void findGuestButton_Click(object sender, EventArgs e)
         {
             string GuestLast = textBox1.Text;
+            frontDeskListBox.Items.Clear();
+            
 
             List<string> resList = new List<string>(model.ReservationFillLastName(GuestLast));
             if (resList.Count == 0)
@@ -181,8 +198,13 @@ namespace ApplicationDesign
                 textBox2.Text = resList[3];
                 textBox3.Text = resList[4];
                 textBox4.Text = resList[7];
-                reservationStartDateDTP.Text = resList[5];
-                reservationEndDateDTP.Text = resList[6];
+                reservationStartDateDTP.Text = resList[6];
+                reservationEndDateDTP.Text = resList[5];
+                reservationIDTextBox.Clear();
+
+                string guestFullName = resList[1] + " " + resList[2];
+
+                frontDeskListBox.Items.Add(guestFullName);
             }
         }
 

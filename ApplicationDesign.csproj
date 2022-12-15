@@ -81,6 +81,12 @@
     <Compile Include="Housekeeping1.Designer.cs">
       <DependentUpon>Housekeeping1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Invoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Invoice.Designer.cs">
+      <DependentUpon>Invoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="MakeAReservation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Housekeeping1.resx">
       <DependentUpon>Housekeeping1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Invoice.resx">
+      <DependentUpon>Invoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MakeAReservation.resx">
       <DependentUpon>MakeAReservation.cs</DependentUpon>

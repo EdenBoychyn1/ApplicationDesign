@@ -59,6 +59,7 @@ namespace ApplicationDesign
             this.userIDToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.passwordToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.signInToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.loginPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loginArtPictureBox)).BeginInit();
             this.passPanel.SuspendLayout();
@@ -113,7 +114,7 @@ namespace ApplicationDesign
             this.userIDTextBox.Name = "userIDTextBox";
             this.userIDTextBox.Size = new System.Drawing.Size(364, 23);
             this.userIDTextBox.TabIndex = 10;
-            this.userIDTextBox.Text = "Enter User ID";
+            this.userIDTextBox.Text = "121";
             this.userIDTextBox.Click += new System.EventHandler(this.userIDTextBox_Click);
             this.userIDTextBox.TextChanged += new System.EventHandler(this.userIDTextBox_TextChanged);
             // 
@@ -190,6 +191,7 @@ namespace ApplicationDesign
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(364, 23);
             this.passwordTextBox.TabIndex = 15;
+            this.passwordTextBox.Text = "123456";
             this.passwordTextBox.Click += new System.EventHandler(this.passwordTextBox_Click);
             this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
             // 
@@ -248,18 +250,19 @@ namespace ApplicationDesign
             // 
             this.buttonPanel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.buttonPanel.AutoSize = true;
+            this.buttonPanel.Controls.Add(this.button1);
             this.buttonPanel.Controls.Add(this.restaurantButton);
             this.buttonPanel.Controls.Add(this.housekeepingButton);
             this.buttonPanel.Controls.Add(this.conciergeButton);
             this.buttonPanel.Controls.Add(this.frontDeskButton);
             this.buttonPanel.Controls.Add(this.managementButton);
             this.buttonPanel.Controls.Add(this.kingWilliamHotelPictureBox);
-            this.buttonPanel.Location = new System.Drawing.Point(6, 21);
+            this.buttonPanel.Location = new System.Drawing.Point(7, 23);
             this.buttonPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonPanel.MaximumSize = new System.Drawing.Size(2000, 148);
             this.buttonPanel.MinimumSize = new System.Drawing.Size(1333, 148);
             this.buttonPanel.Name = "buttonPanel";
-            this.buttonPanel.Size = new System.Drawing.Size(1407, 148);
+            this.buttonPanel.Size = new System.Drawing.Size(1571, 148);
             this.buttonPanel.TabIndex = 0;
             // 
             // restaurantButton
@@ -363,12 +366,30 @@ namespace ApplicationDesign
             this.kingWilliamHotelPictureBox.TabIndex = 0;
             this.kingWilliamHotelPictureBox.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(47)))), ((int)(((byte)(65)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(0)))));
+            this.button1.Image = global::ApplicationDesign.Properties.Resources.manager;
+            this.button1.Location = new System.Drawing.Point(1400, 7);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(167, 131);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Generate Invoice";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.managementToolTip.SetToolTip(this.button1, "Select this button to add an employee.");
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // kingWilliamHotelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(141)))), ((int)(((byte)(183)))));
-            this.ClientSize = new System.Drawing.Size(1449, 815);
+            this.ClientSize = new System.Drawing.Size(1582, 815);
             this.Controls.Add(this.buttonPanel);
             this.Controls.Add(this.signInButton);
             this.Controls.Add(this.passPanel);
@@ -377,8 +398,8 @@ namespace ApplicationDesign
             this.Controls.Add(this.designPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MaximumSize = new System.Drawing.Size(1467, 862);
-            this.MinimumSize = new System.Drawing.Size(1467, 862);
+            this.MaximumSize = new System.Drawing.Size(1600, 862);
+            this.MinimumSize = new System.Drawing.Size(1600, 862);
             this.Name = "kingWilliamHotelForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "King William Hotel";
@@ -425,6 +446,7 @@ namespace ApplicationDesign
         private System.Windows.Forms.ToolTip signInToolTip;
         private System.Windows.Forms.ToolTip restaurantToolTip;
         private System.Windows.Forms.ToolTip housekeepingToolTip;
+        private System.Windows.Forms.Button button1;
     }
 }
 
