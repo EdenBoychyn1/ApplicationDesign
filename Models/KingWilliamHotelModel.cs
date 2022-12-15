@@ -251,7 +251,41 @@ namespace ApplicationDesign.Models
                 }
 
             }
+        public List<string> GenerateInvoice(int resId)
+        {
+            List<string> invoiceList = new List<string>();
+            //int security_level = new int();
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                using (var command = new SqlCommand("GenerateInvoice", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ResID", SqlDbType.NVarChar).Value = resId;
 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (!reader.IsDBNull(0))
+                                //invoiceList.Load(reader);
+                                invoiceList.Add(reader.GetSqlInt32(0).ToString());
+                            invoiceList.Add(reader.GetDateTime(1).ToString());
+                            invoiceList.Add(reader.GetSqlInt32(2).ToString());
+                            invoiceList.Add(reader.GetSqlInt32(3).ToString());
+                            invoiceList.Add(reader.GetSqlInt32(4).ToString());
+                            invoiceList.Add(reader.GetSqlInt32(5).ToString());
+                            invoiceList.Add(reader.GetSqlInt32(6).ToString());
+                            invoiceList.Add(reader.GetDateTime(7).ToString());
+                            invoiceList.Add(reader.GetSqlMoney(8).ToString());
+                            invoiceList.Add(reader.GetSqlInt32(9).ToString());
+                        }
+
+                    }
+                }
+            }
+            return invoiceList;
+        }
     }
     #endregion
 }
