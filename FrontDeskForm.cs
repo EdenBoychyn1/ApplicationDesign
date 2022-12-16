@@ -98,8 +98,6 @@ namespace ApplicationDesign
         }
 
         private void findReservationButton_Click(object sender, EventArgs e)
-
-            
         {
             frontDeskListBox.Items.Clear();
             textBox1.Clear();

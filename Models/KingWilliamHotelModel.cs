@@ -242,16 +242,51 @@ namespace ApplicationDesign.Models
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@ResID", SqlDbType.NVarChar).Value = resId;
-
-
-
                         command.ExecuteNonQuery();
 
                     }
                 }
-
             }
+      
+        public DataTable GenerateInvoice(int resId)
+        {
+            DataTable dt = new DataTable();
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                using (var command = new SqlDataAdapter("SELECT (CLIENT_L_NAME + ', ' + CLIENT_F_NAME) as GuestName, ITEM_DESCRIPTION, FORMAT(AMOUNT_CHARGED, 'C') AS CHARGED_AMOUNT, QUANTITY, DATE_CHARGED FROM TRANSACTIONS_TBL JOIN ITEM_TBL ON TRANSACTIONS_TBL.ITEM_CODE = ITEM_TBL.ITEM_CODE JOIN CLIENTS_TBL ON TRANSACTIONS_TBL.CLIENT_ID = CLIENTS_TBL.CLIENT_ID JOIN INVOICE_TBL ON TRANSACTIONS_TBL.INVOICE_ID = INVOICE_TBL.INVOICE_ID JOIN RESERVATION_TBL ON INVOICE_TBL.RESERVATION_ID = RESERVATION_TBL.RESERVATION_ID WHERE RESERVATION_TBL.RESERVATION_ID = @ResId; ", connection))
+                {
+                    command.SelectCommand.Parameters.Add("@ResId", SqlDbType.Int).Value = resId;
+                    command.Fill(dt);
+                }
+            }
+            return dt;
+        }
 
+
+        public string TotalWithTax(int resId)
+        {
+            string totalWithTax = null;
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                using (var command = new SqlCommand("SELECT FORMAT(SUM(AMOUNT_CHARGED) * 1.13, 'C') FROM TRANSACTIONS_TBL, INVOICE_TBL WHERE TRANSACTIONS_TBL.INVOICE_ID = INVOICE_TBL.INVOICE_ID AND RESERVATION_ID = @ResId", connection))
+                {
+                    command.Parameters.Add("@ResId", SqlDbType.Int).Value = resId;
+                    command.Prepare();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            totalWithTax = reader.GetValue(0).ToString();
+                        }
+                    }
+                }
+            }
+            return totalWithTax;
+        }
+    
     }
     #endregion
 }
