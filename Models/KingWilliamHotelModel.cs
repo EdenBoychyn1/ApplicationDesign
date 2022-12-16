@@ -242,50 +242,51 @@ namespace ApplicationDesign.Models
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@ResID", SqlDbType.NVarChar).Value = resId;
-
-
-
                         command.ExecuteNonQuery();
 
                     }
                 }
-
             }
-        public List<string> GenerateInvoice(int resId)
+      
+        public DataTable GenerateInvoice(int resId)
         {
-            List<string> invoiceList = new List<string>();
-            //int security_level = new int();
+            DataTable dt = new DataTable();
             using (var connection = GetConnection())
             {
                 connection.Open();
-                using (var command = new SqlCommand("GenerateInvoice", connection))
+                using (var command = new SqlDataAdapter("SELECT (CLIENT_L_NAME + ', ' + CLIENT_F_NAME) as GuestName, ITEM_DESCRIPTION, FORMAT(AMOUNT_CHARGED, 'C') AS CHARGED_AMOUNT, QUANTITY, DATE_CHARGED FROM TRANSACTIONS_TBL JOIN ITEM_TBL ON TRANSACTIONS_TBL.ITEM_CODE = ITEM_TBL.ITEM_CODE JOIN CLIENTS_TBL ON TRANSACTIONS_TBL.CLIENT_ID = CLIENTS_TBL.CLIENT_ID JOIN INVOICE_TBL ON TRANSACTIONS_TBL.INVOICE_ID = INVOICE_TBL.INVOICE_ID JOIN RESERVATION_TBL ON INVOICE_TBL.RESERVATION_ID = RESERVATION_TBL.RESERVATION_ID WHERE RESERVATION_TBL.RESERVATION_ID = @ResId; ", connection))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@ResID", SqlDbType.NVarChar).Value = resId;
+                    command.SelectCommand.Parameters.Add("@ResId", SqlDbType.Int).Value = resId;
+                    command.Fill(dt);
+                }
+            }
+            return dt;
+        }
+
+
+        public string TotalWithTax(int resId)
+        {
+            string totalWithTax = null;
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                using (var command = new SqlCommand("SELECT FORMAT(SUM(AMOUNT_CHARGED) * 1.13, 'C') FROM TRANSACTIONS_TBL, INVOICE_TBL WHERE TRANSACTIONS_TBL.INVOICE_ID = INVOICE_TBL.INVOICE_ID AND RESERVATION_ID = @ResId", connection))
+                {
+                    command.Parameters.Add("@ResId", SqlDbType.Int).Value = resId;
+                    command.Prepare();
 
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            if (!reader.IsDBNull(0))
-                                //invoiceList.Load(reader);
-                                invoiceList.Add(reader.GetSqlInt32(0).ToString());
-                            invoiceList.Add(reader.GetDateTime(1).ToString());
-                            invoiceList.Add(reader.GetSqlInt32(2).ToString());
-                            invoiceList.Add(reader.GetSqlInt32(3).ToString());
-                            invoiceList.Add(reader.GetSqlInt32(4).ToString());
-                            invoiceList.Add(reader.GetSqlInt32(5).ToString());
-                            invoiceList.Add(reader.GetSqlInt32(6).ToString());
-                            invoiceList.Add(reader.GetDateTime(7).ToString());
-                            invoiceList.Add(reader.GetSqlMoney(8).ToString());
-                            invoiceList.Add(reader.GetSqlInt32(9).ToString());
+                            totalWithTax = reader.GetValue(0).ToString();
                         }
-
                     }
                 }
             }
-            return invoiceList;
+            return totalWithTax;
         }
+    
     }
     #endregion
 }

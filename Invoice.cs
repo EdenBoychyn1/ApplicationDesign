@@ -26,13 +26,11 @@ namespace ApplicationDesign
         private void findReservationButton_Click(object sender, EventArgs e)
         {
             KingWilliamHotelModel hotelModel = new KingWilliamHotelModel();
-            frontDeskListBox.Items.Clear();
+            //frontDeskListBox.Items.Clear();
             int ResId = Int32.Parse(reservationIDTextBox.Text);
 
             List<string> resList = new List<string>(hotelModel.ReservationFill(ResId));
-            List<string> invoiceList = hotelModel.GenerateInvoice(ResId);
 
-            //invoiceList = hotelModel.GenerateInvoice(ResId);
             if (resList.Count == 0)
             {
                 MessageBox.Show("Reservation Not Found in the System");
@@ -49,11 +47,16 @@ namespace ApplicationDesign
 
                 string guestFullName = resList[0] + " " + resList[1];
 
-                frontDeskListBox.Items.Add(guestFullName);
-                //dataGridView1.DataSource = invoiceList.ToString();
-                dataGridView1.AutoGenerateColumns = true;
-                //dataGridView1.Rows[0] = invoiceList[0];
-                dataGridView1.DataSource = invoiceList.Select(x => new { Value = x }).ToList();
+                
+                dataGridView1.DataSource = hotelModel.GenerateInvoice(ResId);
+
+                dataGridView1.Columns["GuestName"].HeaderText = "Guest Name";
+                dataGridView1.Columns["ITEM_DESCRIPTION"].HeaderText = "Concierge Services/Items";
+                dataGridView1.Columns["CHARGED_AMOUNT"].HeaderText = "Amount Charged";
+                dataGridView1.Columns["QUANTITY"].HeaderText = "Quantity";
+                dataGridView1.Columns["DATE_CHARGED"].HeaderText = "Date Charged";
+
+                totalwithTaxTextBox.Text = hotelModel.TotalWithTax(ResId);
             }
 
         }
@@ -62,5 +65,11 @@ namespace ApplicationDesign
         {
 
         }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
